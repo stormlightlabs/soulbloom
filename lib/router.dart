@@ -1,11 +1,13 @@
 // Copyright 2025, Stormlight Labs
 
-import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:soulbloom/screens/play/screen.dart';
+import 'package:soulbloom/layouts/shell.dart';
 
 import 'screens/home_screen.dart';
 import 'screens/settings/settings_screen.dart';
+
+final GlobalKey<NavigatorState> _rootNavigatorKey = GlobalKey<NavigatorState>();
 
 /// Application Routing Configuration
 ///
@@ -36,16 +38,15 @@ import 'screens/settings/settings_screen.dart';
 ///
 /// /settings: SettingsScreen
 final router = GoRouter(
+  navigatorKey: _rootNavigatorKey,
   routes: [
     GoRoute(
       path: '/',
       builder: (context, state) => const MainMenuScreen(key: Key('main menu')),
       routes: [
         GoRoute(
-          path: "play",
-          builder: (context, state) => const PlayScreen(
-            key: Key("play"),
-          ),
+          path: "app",
+          builder: (context, state) => Shell(),
           routes: [],
         ),
         GoRoute(

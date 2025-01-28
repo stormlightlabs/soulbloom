@@ -53,7 +53,7 @@ class MainMenuScreen extends StatelessWidget {
               ActionButton(
                   onPressed: () {
                     audioController.playSfx(SfxType.buttonTap);
-                    GoRouter.of(context).go('/play');
+                    GoRouter.of(context).go('/app');
                   },
                   child: Text(
                     'Play',
