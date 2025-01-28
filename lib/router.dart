@@ -2,6 +2,7 @@
 
 import 'package:flutter/foundation.dart';
 import 'package:go_router/go_router.dart';
+import 'package:soulbloom/screens/play/screen.dart';
 
 import 'screens/home_screen.dart';
 import 'screens/settings/settings_screen.dart';
@@ -40,6 +41,13 @@ final router = GoRouter(
       path: '/',
       builder: (context, state) => const MainMenuScreen(key: Key('main menu')),
       routes: [
+        GoRoute(
+          path: "play",
+          builder: (context, state) => const PlayScreen(
+            key: Key("play"),
+          ),
+          routes: [],
+        ),
         GoRoute(
           path: 'settings',
           builder: (context, state) =>

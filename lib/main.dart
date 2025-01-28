@@ -60,14 +60,31 @@ class MyApp extends StatelessWidget {
           final palette = context.watch<Palette>();
 
           return MaterialApp.router(
-            title: 'My Flutter Game',
+            title: 'Soulbloom',
             theme: ThemeData.from(
               colorScheme: ColorScheme.fromSeed(
                 seedColor: palette.darkPen,
                 surface: palette.backgroundMain,
               ),
               textTheme: TextTheme(
-                bodyMedium: TextStyle(color: palette.ink),
+                titleLarge: TextStyle(
+                  fontFamily: "Jersey 25",
+                  letterSpacing: 0.5,
+                  fontSize: 32,
+                  color: palette.trueWhite,
+                ),
+                bodyMedium: TextStyle(
+                  fontSize: 24,
+                  fontFamily: "Jersey 25",
+                  letterSpacing: 0.25,
+                  color: palette.trueWhite,
+                ),
+                bodySmall: TextStyle(
+                  fontFamily: "Jersey 25",
+                  fontSize: 16,
+                  letterSpacing: 0.25,
+                  color: palette.trueWhite,
+                ),
               ),
               useMaterial3: true,
             ).copyWith(

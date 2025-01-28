@@ -13,6 +13,7 @@ dependencies:
   logging: ^1.2.0
   provider: ^6.1.2
   shared_preferences: ^2.2.3
+  google_fonts: ^6.2.1
 dev_dependencies:
   flutter_lints: ^5.0.0
   flutter_test:
@@ -25,6 +26,7 @@ flutter:
     - assets/images/
     - assets/music/
     - assets/sfx/
+    - assets/data/
   fonts:
     - family: Jersey 25
       fonts:
