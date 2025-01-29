@@ -1,11 +1,10 @@
-// Copyright 2023, the Flutter project authors. Please see the AUTHORS file
-// for details. All rights reserved. Use of this source code is governed by a
-// BSD-style license that can be found in the LICENSE file.
+// Copyright 2025, Stormlight Labs the Flutter project authors.
 
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:soulbloom/style/palette.dart';
+
+import '../models/palette.dart';
 
 class ActionButton extends StatefulWidget {
   final Widget child;

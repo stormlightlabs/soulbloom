@@ -10,23 +10,17 @@ CustomTransitionPage<T> buildMyTransition<T>({
   Object? arguments,
   String? restorationId,
   LocalKey? key,
-}) {
-  return CustomTransitionPage<T>(
-    child: child,
-    transitionsBuilder: (context, animation, secondaryAnimation, child) {
-      return _Reveal(
-        animation: animation,
-        color: color,
-        child: child,
-      );
-    },
-    key: key,
-    name: name,
-    arguments: arguments,
-    restorationId: restorationId,
-    transitionDuration: const Duration(milliseconds: 700),
-  );
-}
+}) =>
+    CustomTransitionPage<T>(
+      child: child,
+      transitionsBuilder: (context, animation, secondaryAnimation, child) =>
+          _Reveal(animation: animation, color: color, child: child),
+      key: key,
+      name: name,
+      arguments: arguments,
+      restorationId: restorationId,
+      transitionDuration: const Duration(milliseconds: 700),
+    );
 
 class _Reveal extends StatelessWidget {
   final Widget child;
@@ -42,11 +36,7 @@ class _Reveal extends StatelessWidget {
     TweenSequenceItem(tween: Tween(begin: 0.0, end: 1.0), weight: 1),
   ]);
 
-  _Reveal({
-    required this.child,
-    required this.animation,
-    required this.color,
-  });
+  _Reveal({required this.child, required this.animation, required this.color});
 
   @override
   Widget build(BuildContext context) {
@@ -61,14 +51,9 @@ class _Reveal extends StatelessWidget {
               reverseCurve: Curves.easeOutCubic,
             ),
           ),
-          child: Container(
-            color: color,
-          ),
+          child: Container(color: color),
         ),
-        FadeTransition(
-          opacity: _fadeTween.animate(animation),
-          child: child,
-        ),
+        FadeTransition(opacity: _fadeTween.animate(animation), child: child),
       ],
     );
   }

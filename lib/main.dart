@@ -11,9 +11,9 @@ import 'package:provider/provider.dart';
 
 import 'audio/audio_controller.dart';
 import 'models/app_lifecycle.dart';
+import 'models/palette.dart';
 import 'router/router_config.dart';
 import 'screens/settings/settings.dart';
-import 'style/palette.dart';
 
 void main() async {
   Logger.root.level = kDebugMode ? Level.FINE : Level.INFO;

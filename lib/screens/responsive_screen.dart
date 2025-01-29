@@ -1,6 +1,4 @@
-// Copyright 2022, the Flutter project authors. Please see the AUTHORS file
-// for details. All rights reserved. Use of this source code is governed by a
-// BSD-style license that can be found in the LICENSE file.
+// Copyright 2025, Stormlight Labs and the Flutter project authors.
 
 import 'package:flutter/material.dart';
 
@@ -8,12 +6,10 @@ import 'package:flutter/material.dart';
 /// main area, a smaller menu area, and a small area for a message on top.
 /// It works in both orientations on mobile- and tablet-sized screens.
 class ResponsiveScreen extends StatelessWidget {
-  /// This is the "hero" of the screen. It's more or less square, and will
-  /// be placed in the visual "center" of the screen.
+  /// Square "hero" of the screen. In the visual "center" of the screen.
   final Widget squarishMainArea;
 
-  /// The second-largest area after [squarishMainArea]. It can be narrow
-  /// or wide.
+  /// Second-largest area after [squarishMainArea]. Narrow or wide.
   final Widget rectangularMenuArea;
 
   /// An area reserved for some static text close to the top of the screen.
@@ -30,21 +26,16 @@ class ResponsiveScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
-        // This widget wants to fill the whole screen.
         final size = constraints.biggest;
         final padding = EdgeInsets.all(size.shortestSide / 30);
-
-        if (size.height >= size.width) {
-          // "Portrait" / "mobile" mode.
+        final isMobile = size.height >= size.width;
+        if (isMobile) {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               SafeArea(
                 bottom: false,
-                child: Padding(
-                  padding: padding,
-                  child: topMessageArea,
-                ),
+                child: Padding(padding: padding, child: topMessageArea),
               ),
               Expanded(
                 child: SafeArea(
@@ -59,22 +50,19 @@ class ResponsiveScreen extends StatelessWidget {
                 maintainBottomViewPadding: true,
                 child: Padding(
                   padding: padding,
-                  child: Center(
-                    child: rectangularMenuArea,
-                  ),
+                  child: Center(child: rectangularMenuArea),
                 ),
               ),
             ],
           );
         } else {
-          // "Landscape" / "tablet" mode.
-          final isLarge = size.width > 900;
+          final isTablet = size.width > 900;
 
           return Row(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Expanded(
-                flex: isLarge ? 7 : 5,
+                flex: isTablet ? 7 : 5,
                 child: SafeArea(
                   right: false,
                   maintainBottomViewPadding: true,
@@ -90,10 +78,7 @@ class ResponsiveScreen extends StatelessWidget {
                       bottom: false,
                       left: false,
                       maintainBottomViewPadding: true,
-                      child: Padding(
-                        padding: padding,
-                        child: topMessageArea,
-                      ),
+                      child: Padding(padding: padding, child: topMessageArea),
                     ),
                     Expanded(
                       child: SafeArea(

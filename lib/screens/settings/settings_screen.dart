@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
-import '../../style/responsive_screen.dart';
 import '../../widgets/action_button.dart';
+import '../responsive_screen.dart';
 import 'custom_name_dialog.dart';
 import 'settings.dart';
 
