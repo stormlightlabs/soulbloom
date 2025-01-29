@@ -18,6 +18,28 @@ class PromptCardDeckObject {
   set cardSet(List<PromptCardObject> c) {
     cards = c;
   }
+
+  PromptCardObject getRandomCard() {
+    final Random rand = Random();
+    return cards[rand.nextInt(cards.length)];
+  }
+
+  PromptCardObject shuffleAndDraw() {
+    // Copy the deck to a new instance so that we don't mutate the original deck
+    final copiedDeck = PromptCardDeckObject.shuffle(this);
+    return copiedDeck.cards.first;
+  }
+
+  factory PromptCardDeckObject.shuffle(PromptCardDeckObject deck) {
+    final List<PromptCardObject> shuffledCards = deck.cards.toList();
+    shuffledCards.shuffle();
+    return PromptCardDeckObject(
+      name: deck.name,
+      description: deck.description,
+      filepath: deck.filepath,
+      cards: shuffledCards,
+    );
+  }
 }
 
 class PromptCardObject {

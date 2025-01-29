@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
-import '../../style/action_button.dart';
 import '../../style/responsive_screen.dart';
+import '../../widgets/action_button.dart';
 import 'custom_name_dialog.dart';
 import 'settings.dart';
 
@@ -106,12 +106,14 @@ class _NameChangeLine extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(title,
-                style: const TextStyle(
-                  fontFamily: 'Jersey 25',
-                  fontSize: 30,
-                  color: Colors.white60,
-                )),
+            Text(
+              title,
+              style: const TextStyle(
+                fontFamily: 'Jersey 25',
+                fontSize: 30,
+                color: Colors.white60,
+              ),
+            ),
             const Spacer(),
             ValueListenableBuilder(
               valueListenable: settings.playerName,

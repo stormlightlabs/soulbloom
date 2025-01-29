@@ -1,9 +1,10 @@
 // Copyright 2025, Stormlight Labs
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-import '../../models/prompt_cards.dart';
-import '../../models/prompt_deck_provider.dart';
+import '../models/prompt_cards.dart';
+import '../models/prompt_deck_provider.dart';
 
 class DeckBrowserScreen extends ConsumerWidget {
   final String id;
@@ -18,30 +19,40 @@ class DeckBrowserScreen extends ConsumerWidget {
     return decksAsync.when(
       loading: () => CircularProgressIndicator(),
       error: (err, stack) => Text('Error: $err'),
-      data: (decks) {
-        final PromptCardDeckObject deck = decks.getDeck(type);
-        return Scaffold(
-          appBar: AppBar(title: Text(deck.name)),
-          resizeToAvoidBottomInset: false,
-          body: SingleChildScrollView(
-            child: Column(
-              children: [
-                Text("Deck"),
-                ListView.builder(
-                  shrinkWrap: true,
-                  padding: const EdgeInsets.all(8),
-                  physics: NeverScrollableScrollPhysics(),
-                  itemCount: deck.cards.length,
-                  itemBuilder: (context, index) => GameCardListTile(
-                    card: deck.cards[index],
-                    type: DeckType.reverse(deck.name),
-                  ),
-                )
-              ],
+      data: (decks) => _buildScreenLayout(decks.getDeck(type)),
+    );
+  }
+
+  Widget _buildScreenLayout(PromptCardDeckObject currentDeck) {
+    return Scaffold(
+      appBar: AppBar(title: Text(currentDeck.name)),
+      resizeToAvoidBottomInset: false,
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Container(
+              padding: EdgeInsets.only(left: 28, right: 28, top: 8),
+              child: Text(
+                currentDeck.description,
+                style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: GoogleFonts.comingSoon().fontFamily),
+              ),
             ),
-          ),
-        );
-      },
+            ListView.builder(
+              shrinkWrap: true,
+              padding: EdgeInsets.all(8),
+              physics: NeverScrollableScrollPhysics(),
+              itemCount: currentDeck.cards.length,
+              itemBuilder: (context, index) => GameCardListTile(
+                card: currentDeck.cards[index],
+                type: DeckType.reverse(currentDeck.name),
+              ),
+            )
+          ],
+        ),
+      ),
     );
   }
 }
@@ -50,16 +61,12 @@ class GameCardListTile extends StatelessWidget {
   final PromptCardObject card;
   final DeckType type;
 
-  const GameCardListTile({
-    super.key,
-    required this.card,
-    required this.type,
-  });
+  const GameCardListTile({super.key, required this.card, required this.type});
 
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       child: ListTile(
         leading: CircleAvatar(
           backgroundColor: type.bgColor,
@@ -70,13 +77,22 @@ class GameCardListTile extends StatelessWidget {
           style: TextStyle(
             fontWeight: FontWeight.bold,
             color: Colors.grey[800],
+            fontSize: 20,
+            fontFamily: GoogleFonts.capriola().fontFamily,
           ),
         ),
         subtitle: Text(
           card.description,
-          style: TextStyle(
-            color: Colors.grey[600],
-          ),
+          style: TextStyle(color: Colors.grey[600]),
+        ),
+        trailing: PopupMenuButton(
+          child: Icon(Icons.more_vert),
+          itemBuilder: (context) => [
+            PopupMenuItem(value: 'details', child: Text('Details')),
+            PopupMenuItem(value: 'favorite', child: Text('Favorite')),
+            PopupMenuItem(value: 'share', child: Text('Share')),
+          ],
+          onSelected: (value) => debugPrint('Card menu item selected: $value'),
         ),
         onTap: () => {_showCardDetails(context)},
       ),
@@ -119,33 +135,23 @@ class GameCardDetailModal extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: Colors.yellow[200],
                   borderRadius: BorderRadius.circular(8),
-                  border: Border.all(
-                    color: Colors.amberAccent,
-                    width: 2,
-                  ),
+                  border: Border.all(color: Colors.amberAccent, width: 2),
                 ),
-                child: Icon(
-                  Icons.bolt_outlined,
-                  size: 48,
-                  color: Colors.amber,
-                ),
+                child: Icon(Icons.bolt_outlined, size: 48, color: Colors.amber),
               ),
-              const SizedBox(width: 16),
+              _gap(),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      card.title,
-                      style: TextStyle(color: Colors.amber),
-                    ),
-                    const SizedBox(height: 8),
+                    Text(card.title, style: TextStyle(color: Colors.amber)),
+                    _gap(divisor: 2),
                   ],
                 ),
               ),
             ],
           ),
-          const SizedBox(height: 16),
+          _gap(),
           Card(
             color: Colors.yellow[200],
             child: Padding(
@@ -153,10 +159,7 @@ class GameCardDetailModal extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    'Description',
-                    style: TextStyle(color: Colors.black),
-                  ),
+                  Text('Description', style: TextStyle(color: Colors.black)),
                   const SizedBox(height: 8),
                   Text(
                     card.description,
@@ -166,7 +169,7 @@ class GameCardDetailModal extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(height: 16),
+          _gap(),
           ElevatedButton(
             onPressed: () => Navigator.pop(context),
             style: ElevatedButton.styleFrom(
@@ -180,4 +183,6 @@ class GameCardDetailModal extends StatelessWidget {
       ),
     );
   }
+
+  Widget _gap({int divisor = 1}) => SizedBox(height: (16 / divisor));
 }
