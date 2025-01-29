@@ -32,7 +32,7 @@ class PromptCardWidget extends StatelessWidget {
           border: Border.all(color: Colors.black26),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.2),
+              color: Colors.black12,
               blurRadius: 4.0,
               offset: const Offset(2.0, 2.0),
             ),
