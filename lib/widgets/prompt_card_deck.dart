@@ -17,8 +17,6 @@ class PromptCardDeck extends StatefulWidget {
 class _PromptCardDeckState extends State<PromptCardDeck> {
   late PromptCardDeckObject playingCardDeck;
 
-  // TODO: Create an abstract Service class
-  // TODO: Move to PromptCardDeckService
   Future<void> loadDeck() async {
     final String deckName = widget.deckName;
     final String content =
@@ -39,7 +37,7 @@ class _PromptCardDeckState extends State<PromptCardDeck> {
           children: [
             Title(
               color: Colors.white,
-              child: Text(playingCardDeck.category),
+              child: Text(playingCardDeck.name),
             ),
             Expanded(
               child: Text("No cards in this deck"),
@@ -51,7 +49,7 @@ class _PromptCardDeckState extends State<PromptCardDeck> {
       List<Widget> children = [
         Title(
           color: Colors.white,
-          child: Text(playingCardDeck.category),
+          child: Text(playingCardDeck.name),
         )
       ];
 

@@ -1,0 +1,184 @@
+name: "DBT"
+description: "Dialectical Behavior Therapy (DBT) is a type of cognitive-behavioral therapy that focuses on developing skills to manage emotions, build relationships, and cope with distress. These cards offer practical exercises to develop emotional regulation, interpersonal effectiveness, and distress tolerance."
+cards:
+  - id: dt1
+    title: TIPP Skills
+    duration: 10
+    difficulty: beginner
+    description: Temperature, Intense exercise, Paced breathing, Paired muscle relaxation
+    instructions: Use cold temperature or exercise to reduce emotional intensity
+  - id: dt2
+    title: STOP Skill
+    duration: 5
+    difficulty: beginner
+    description: Stop, Take a step back, Observe, Proceed mindfully
+    instructions: Practice stopping and observing before acting on urges
+  - id: dt3
+    title: Wise Mind ACCEPTS
+    duration: 15
+    difficulty: intermediate
+    description: Activities, Contributing, Comparisons, Emotions, Pushing away, Thoughts, Sensations
+    instructions: Choose and practice one ACCEPTS strategy for current situation
+  - id: dt4
+    title: Self-Soothing
+    duration: 10
+    difficulty: beginner
+    description: Use five senses to self-soothe during distress
+    instructions: Create list of soothing activities for each sense
+  - id: dt5
+    title: IMPROVE Skills
+    duration: 15
+    difficulty: intermediate
+    description: Imagery, Meaning, Prayer, Relaxation, One thing, Vacation, Encouragement
+    instructions: Practice using IMPROVE skills during difficult moments
+  - id: dt6
+    title: Radical Acceptance
+    duration: 20
+    difficulty: hard
+    description: Accept reality as it is without fighting it
+    instructions: Practice accepting a difficult situation without trying to change it
+  - id: dt7
+    title: Crisis Survival Strategies
+    duration: 15
+    difficulty: intermediate
+    description: Develop personalized crisis plan
+    instructions: Create list of go-to strategies for different crisis situations
+  - id: dt8
+    title: Pros and Cons
+    duration: 10
+    difficulty: intermediate
+    description: Evaluate consequences of actions vs. using skills
+    instructions: List pros/cons of acting on urges vs. using coping skills
+  - id: dt9
+    title: Distraction Plan
+    duration: 10
+    difficulty: beginner
+    description: Create structured distraction activities
+    instructions: Develop categorized list of healthy distractions
+  - id: dt10
+    title: Willingness vs. Willfulness
+    duration: 15
+    difficulty: hard
+    description: Practice accepting reality with willingness
+    instructions: Identify areas of willfulness and practice willingness
+  - id: er1
+    title: Check the Facts
+    duration: 15
+    difficulty: intermediate
+    description: Examine evidence for emotional interpretations
+    instructions: Identify emotion-triggering thoughts and evaluate their accuracy
+  - id: er2
+    title: PLEASE Skills
+    duration: 10
+    difficulty: beginner
+    description: Treat PhysicaL illness, balanced Eating, avoid mood-Altering drugs, balanced Sleep, get Exercise
+    instructions: Rate current PLEASE skills and choose one to improve
+  - id: er3
+    title: Opposite Action
+    duration: 15
+    difficulty: intermediate
+    description: Act opposite to emotion urges when appropriate
+    instructions: Identify emotion urge and practice opposite behavior
+  - id: er4
+    title: ABC PLEASE
+    duration: 20
+    difficulty: intermediate
+    description: Accumulate positive experiences, Build mastery, Cope ahead
+    instructions: Plan activities for positive experiences and skill building
+  - id: er5
+    title: Emotion Awareness
+    duration: 10
+    difficulty: beginner
+    description: Identify and label current emotions
+    instructions: Track emotions, triggers, and body sensations throughout day
+  - id: er6
+    title: Reduce Vulnerability
+    duration: 15
+    difficulty: intermediate
+    description: Identify and change factors increasing emotional sensitivity
+    instructions: List vulnerability factors and develop management strategies
+  - id: er7
+    title: Problem Solving
+    duration: 20
+    difficulty: hard
+    description: Apply problem-solving to emotion-triggering situations
+    instructions: Use DBT problem-solving steps for emotional challenge
+  - id: er8
+    title: Mindfulness of Emotions
+    duration: 15
+    difficulty: intermediate
+    description: Observe and describe emotions without judgment
+    instructions: Practice observing emotions like waves coming and going
+  - id: er9
+    title: Values Clarity
+    duration: 15
+    difficulty: intermediate
+    description: Connect emotional responses to personal values
+    instructions: Identify values underlying emotional reactions
+  - id: er10
+    title: Emotion Myths
+    duration: 10
+    difficulty: beginner
+    description: Challenge common misconceptions about emotions
+    instructions: Examine and reality-test beliefs about emotions
+  - id: ie1
+    title: DEAR MAN Skills
+    duration: 15
+    difficulty: intermediate
+    description: Describe, Express, Assert, Reinforce, Mindful, Appear confident, Negotiate
+    instructions: Practice DEAR MAN for a specific request
+
+  - id: ie2
+    title: GIVE Skills
+    duration: 10
+    difficulty: beginner
+    description: Gentle, Interest, Validate, Easy manner
+    instructions: Role-play using GIVE skills in conversation
+  - id: ie3
+    title: FAST Skills
+    duration: 15
+    difficulty: intermediate
+    description: Fair, Apologies (no excessive), Stick to values, Truthful
+    instructions: Apply FAST skills to maintain self-respect
+  - id: ie4
+    title: Validation Practice
+    duration: 15
+    difficulty: intermediate
+    description: Learn to validate others' emotions and experiences
+    instructions: Practice six levels of validation
+  - id: ie5
+    title: Priority Analysis
+    duration: 10
+    difficulty: beginner
+    description: Balance objectives, relationships, and self-respect
+    instructions: Evaluate priorities in current interpersonal situation
+  - id: ie6
+    title: Boundary Setting
+    duration: 20
+    difficulty: hard
+    description: Establish and maintain healthy boundaries
+    instructions: Identify and practice expressing personal boundaries
+  - id: ie7
+    title: Active Listening
+    duration: 15
+    difficulty: intermediate
+    description: Improve listening and understanding skills
+    instructions: Practice reflective listening techniques
+  - id: ie8
+    title: Relationship Repair
+    duration: 20
+    difficulty: hard
+    description: Skills for mending relationship ruptures
+    instructions: Apply repair strategies to current conflict
+  - id: ie9
+    title: Communication Styles
+    duration: 15
+    difficulty: intermediate
+    description: Identify passive, aggressive, and assertive patterns
+    instructions: Practice shifting between communication styles
+  - id: ie10
+    title: Problem-Solving Dialog
+    duration: 15
+    difficulty: intermediate
+    description: Collaborative problem-solving in relationships
+    instructions: Use structured dialog for interpersonal problems

@@ -1,89 +1,59 @@
 // Copyright 2025, Stormlight Labs
-// TODO: Implement loadData to read the assets/data directory
-//  then create a list of PromptCardDeck objects.
-// TODO: Handle persistence of custom cards
-// TODO: Move to PromptCardDeckService
-import 'dart:async';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:yaml/yaml.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../models/prompt_cards.dart';
+import '../../models/prompt_deck_provider.dart';
 
-class DeckBrowserScreen extends StatefulWidget {
-  const DeckBrowserScreen({super.key});
+class DeckBrowserScreen extends ConsumerWidget {
+  final String id;
+  const DeckBrowserScreen({super.key, required this.id});
 
-  @override
-  State<DeckBrowserScreen> createState() => _DeckBrowserScreenState();
-}
-
-class _DeckBrowserScreenState extends State<DeckBrowserScreen> {
-  Future<PromptCardDeckObject> _promptCardDeck() async {
-    String content = await rootBundle.loadString("assets/data/movement.yml");
-
-    YamlMap data = loadYaml(content) as YamlMap;
-
-    List<PromptCardObject> cards = (data["cards"] as YamlList)
-        .map(
-          (element) => PromptCardObject(
-            element["id"] as String,
-            element["title"] as String,
-            element["description"] as String,
-            element["instructions"] as String,
-            element["duration"] as int,
-          ),
-        )
-        .toList();
-
-    PromptCardDeckObject deck = PromptCardDeckObject(
-        data["category"] as String, data["description"] as String, cards);
-
-    return deck;
-  }
+  String get filepath => "assets/data/$id.yml";
+  DeckType get type => DeckType.fromId(id);
 
   @override
-  Widget build(BuildContext context) {
-    return FutureBuilder<PromptCardDeckObject>(
-        future: _promptCardDeck(),
-        builder: (context, snapshot) {
-          switch (snapshot.connectionState) {
-            case ConnectionState.waiting:
-              return CircularProgressIndicator();
-            case ConnectionState.none:
-              return Center(child: Text("Empty File"));
-            default:
-              return Scaffold(
-                resizeToAvoidBottomInset: false,
-                body: SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      Text("Deck"),
-                      ListView.builder(
-                        shrinkWrap: true,
-                        padding: const EdgeInsets.all(8),
-                        physics: NeverScrollableScrollPhysics(),
-                        itemCount: snapshot.data!.cards.length,
-                        itemBuilder: (context, index) {
-                          return GameCardListTile(
-                              card: snapshot.data!.cards[index]);
-                        },
-                      )
-                    ],
+  Widget build(BuildContext context, WidgetRef ref) {
+    final decksAsync = ref.watch(decksProvider);
+    return decksAsync.when(
+      loading: () => CircularProgressIndicator(),
+      error: (err, stack) => Text('Error: $err'),
+      data: (decks) {
+        final PromptCardDeckObject deck = decks.getDeck(type);
+        return Scaffold(
+          appBar: AppBar(title: Text(deck.name)),
+          resizeToAvoidBottomInset: false,
+          body: SingleChildScrollView(
+            child: Column(
+              children: [
+                Text("Deck"),
+                ListView.builder(
+                  shrinkWrap: true,
+                  padding: const EdgeInsets.all(8),
+                  physics: NeverScrollableScrollPhysics(),
+                  itemCount: deck.cards.length,
+                  itemBuilder: (context, index) => GameCardListTile(
+                    card: deck.cards[index],
+                    type: DeckType.reverse(deck.name),
                   ),
-                ),
-              );
-          }
-        });
+                )
+              ],
+            ),
+          ),
+        );
+      },
+    );
   }
 }
 
 class GameCardListTile extends StatelessWidget {
   final PromptCardObject card;
+  final DeckType type;
 
   const GameCardListTile({
     super.key,
     required this.card,
+    required this.type,
   });
 
   @override
@@ -92,8 +62,8 @@ class GameCardListTile extends StatelessWidget {
       margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       child: ListTile(
         leading: CircleAvatar(
-          backgroundColor: Colors.yellow[200],
-          child: Icon(Icons.bolt, color: Colors.amber),
+          backgroundColor: type.bgColor,
+          child: Icon(type.icon, color: Colors.white),
         ),
         title: Text(
           card.title,

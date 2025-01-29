@@ -1,0 +1,103 @@
+name: "Creativity & Innovation"
+description: "Exercises to spark creative thinking and innovative solutions."
+cards:
+  - id: ps1
+    title: Role Reversal
+    duration: 15
+    description: Switch perspectives by imagining yourself as the user/client/audience. What would you want or need in their position?
+    instructions: |
+      1. List your assumptions about the current situation
+      2. Imagine yourself in the other person's role
+      3. Note what feels different or surprising
+      4. Identify new insights or opportunities
+    difficulty: medium
+  - id: ps2
+    title: Time Travel
+    duration: 20
+    description: Consider your challenge from different time periods - past, present and future. How does temporal distance change your view?
+    instructions: |
+      1. Describe your challenge in present terms
+      2. Imagine it 50 years ago - what changes?
+      3. Project 50 years ahead - what evolves?
+      4. Extract insights from each timeframe
+    difficulty: hard
+  - id: ps3
+    title: Outsider View
+    duration: 15
+    description: Examine your challenge as if you're from a completely different field or industry. What would they notice or do differently?
+    instructions: |
+      1. Pick an unrelated field/profession
+      2. List their typical approaches
+      3. Apply their methods to your challenge
+      4. Note novel insights
+    difficulty: medium
+  - id: ps4
+    title: Micro/Macro Lens
+    duration: 25
+    description: Zoom in to examine tiny details, then zoom out for the big picture. How does scale change your understanding?
+    instructions: |
+      1. List the smallest details of your challenge
+      2. Examine broader context and systems
+      3. Note relationships between scales
+      4. Identify overlooked opportunities
+    difficulty: hard
+  - id: uc1
+    title: Random Fusion
+    duration: 20
+    description: Combine two unrelated objects or ideas. What new possibilities emerge from their intersection?
+    instructions: |
+      1. Choose two random items/concepts
+      2. List key attributes of each
+      3. Find unexpected connections
+      4. Generate hybrid solutions
+    difficulty: medium
+  - id: uc2
+    title: Cross-Cultural Blend
+    duration: 25
+    description: Mix elements from different cultures or traditions. How do these combinations create something new?
+    instructions: |
+      1. Select two distinct cultures
+      2. Identify unique aspects of each
+      3. Explore meaningful combinations
+      4. Develop hybrid concepts
+    difficulty: hard
+  - id: uc3
+    title: Tech-Nature Fusion
+    duration: 20
+    description: Merge technological and natural elements. What innovations arise from this blend?
+    instructions: |
+      1. Choose a technology and natural process
+      2. Analyze their core functions
+      3. Find complementary aspects
+      4. Create bio-inspired solutions
+    difficulty: medium
+  - id: pb1
+    title: Rule Reversal
+    duration: 15
+    description: Identify and deliberately break conventional rules or assumptions. What becomes possible?
+    instructions: |
+      1. List assumed constraints
+      2. Challenge each assumption
+      3. Explore opposite approaches
+      4. Develop unconventional solutions
+    difficulty: easy
+  - id: pb2
+    title: Constraint Addition
+    duration: 20
+    description: Add unusual constraints to force new thinking patterns. How do limitations spark creativity?
+    instructions: |
+      1. Add three random constraints
+      2. Work within these limits
+      3. Note how restrictions drive innovation
+      4. Refine best ideas
+    difficulty: medium
+  - id: pb3
+    title: Process Shuffle
+    duration: 25
+    description: Rearrange the typical order of steps or elements. What insights emerge from disruption?
+    instructions: |
+      1. Map current process
+      2. Randomly reorder steps
+      3. Explore new sequences
+      4. Identify improvements
+    difficulty: hard

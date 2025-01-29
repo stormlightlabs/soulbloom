@@ -5,12 +5,13 @@ import 'dart:developer' as dev;
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart' as river;
 import 'package:logging/logging.dart';
 import 'package:provider/provider.dart';
 
 import 'app_lifecycle/app_lifecycle.dart';
 import 'audio/audio_controller.dart';
-import 'router.dart';
+import 'router/router.dart';
 import 'screens/settings/settings.dart';
 import 'style/palette.dart';
 
@@ -32,7 +33,7 @@ void main() async {
     DeviceOrientation.portraitDown,
   ]);
 
-  runApp(const MyApp());
+  runApp(river.ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {

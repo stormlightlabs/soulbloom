@@ -1,0 +1,293 @@
+name: "Rest & Recharge"
+description: "A set of cards with various exercises and activities to help relax and rejuvenate, as well as provide some ideas for self-care."
+cards:
+  - id: pr1
+    title: Progressive Muscle Relaxation
+    duration: 15
+    description: Systematic tension and release of major muscle groups to reduce physical tension and promote recovery
+    instructions: |
+      1. Find a quiet space and lie down
+      2. Start with your toes, tense for 5 seconds
+      3. Release and notice the relaxation
+      4. Progress upward through each muscle group
+      5. End with facial muscles
+      6. Rest for 2 minutes after completion
+    difficulty: beginner
+  - id: pr2
+    title: Restorative Yoga Flow
+    duration: 20
+    description: Gentle stretching sequence focusing on major muscle groups and joints
+    instructions: |
+      1. Begin in child's pose (3 min)
+      2. Cat-cow stretches (2 min)
+      3. Downward dog (2 min)
+      4. Gentle forward folds (3 min)
+      5. Supine twist (5 min each side)
+      6. Savasana (5 min)
+    difficulty: intermediate
+
+  - id: pr3
+    title: Recovery Mobility Routine
+    duration: 25
+    description: Joint mobility exercises to improve range of motion and reduce stiffness
+    instructions: |
+      1. Ankle circles (20 each)
+      2. Hip circles (15 each direction)
+      3. Arm circles (20 each)
+      4. Neck mobility (gentle circles)
+      5. Shoulder blade squeezes
+      6. Wrist and finger mobility
+      7. Hold final stretches for 30s each
+    difficulty: beginner
+
+  - id: pr4
+    title: Self-Massage Session
+    duration: 15
+    description: Targeted self-massage techniques using foam roller or massage ball
+    instructions: |
+      1. Roll calves (2 min each)
+      2. IT bands (2 min each)
+      3. Quadriceps (2 min each)
+      4. Upper back (3 min)
+      5. Focus on tender areas for 30s
+      6. Gentle stretching after
+    difficulty: intermediate
+
+  - id: pr5
+    title: Active Recovery Walk
+    duration: 30
+    description: Structured walking session with breathing focus and gentle movement
+    instructions: |
+      1. Start with 5 min warm-up walk
+      2. Incorporate arm swings every 5 min
+      3. Practice deep breathing for 2 min intervals
+      4. Include 5 min of backward walking
+      5. End with gentle stretching
+    difficulty: beginner
+
+  - id: mr1
+    title: Mindful Breathing
+    duration: 10
+    description: Focused breathing exercise to calm the mind and reduce mental fatigue
+    instructions: |
+      1. Sit comfortably or lie down
+      2. Breathe in for 4 counts
+      3. Hold for 4 counts
+      4. Exhale for 6 counts
+      5. Repeat for duration
+      6. If mind wanders, gently return focus
+    difficulty: beginner
+
+  - id: mr2
+    title: Mental Declutter
+    duration: 20
+    description: Structured brain dump and organization exercise
+    instructions: |
+      1. Write down all thoughts for 5 min
+      2. Categorize items (urgent/important)
+      3. Identify top 3 priorities
+      4. Schedule or delegate items
+      5. Close with 2 min reflection
+    difficulty: intermediate
+
+  - id: mr3
+    title: Visualization Reset
+    duration: 15
+    description: Guided imagery exercise for mental refreshment
+    instructions: |
+      1. Close eyes, get comfortable
+      2. Imagine peaceful location
+      3. Engage all senses
+      4. Visualize tension releasing
+      5. Slowly return to present
+      6. Take 3 deep breaths
+    difficulty: beginner
+
+  - id: mr4
+    title: Focus Restoration
+    duration: 25
+    description: Sequence of exercises to rebuild concentration
+    instructions: |
+      1. Single-point focus (5 min)
+      2. Counting breath cycles
+      3. Body scan meditation
+      4. Sound awareness exercise
+      5. Return to task mindfully
+    difficulty: advanced
+
+  - id: mr5
+    title: Digital Detox
+    duration: 40
+    description: Structured break from digital devices with alternative activities
+    instructions: |
+      1. Turn off all notifications
+      2. Store devices out of sight
+      3. Read physical book (15 min)
+      4. Take short walk (15 min)
+      5. Journal reflections (10 min)
+    difficulty: intermediate
+
+  - id: er1
+    title: Emotion Mapping
+    duration: 20
+    description: Exercise to identify and process current emotional state
+    instructions: |
+      1. Find quiet space
+      2. Note physical sensations
+      3. Label emotions present
+      4. Rate intensity (1-10)
+      5. Write without judgment
+      6. Identify needs/actions
+    difficulty: intermediate
+
+  - id: er2
+    title: Gratitude Practice
+    duration: 15
+    description: Structured gratitude exercise to shift emotional perspective
+    instructions: |
+      1. List 3 small daily pleasures
+      2. Write why they matter
+      3. Note one personal strength
+      4. Plan one kind action
+      5. Send appreciation message
+    difficulty: beginner
+
+  - id: er3
+    title: Emotional Release
+    duration: 30
+    description: Movement-based emotional expression and processing
+    instructions: |
+      1. Choose music that matches mood
+      2. Move freely for 10 min
+      3. Journal emotions (10 min)
+      4. Gentle stretching (5 min)
+      5. Close with calm music
+    difficulty: intermediate
+
+  - id: er4
+    title: Self-Compassion Break
+    duration: 10
+    description: Quick practice to cultivate self-kindness during stress
+    instructions: |
+      1. Acknowledge difficulty
+      2. Remember common humanity
+      3. Place hand on heart
+      4. Repeat kind phrases
+      5. Take caring action
+    difficulty: beginner
+
+  - id: er5
+    title: Connection Ritual
+    duration: 25
+    description: Exercises to restore social-emotional balance
+    instructions: |
+      1. List supportive people
+      2. Write appreciation note
+      3. Plan meaningful interaction
+      4. Practice active listening
+      5. Share genuine compliment
+    difficulty: intermediate
+  - id: q1
+    title: Breath Awareness
+    duration: 5
+    description: Simple breath counting meditation for quick centering
+    instructions: |
+      1. Sit comfortably
+      2. Count breaths 1-10
+      3. Return to 1 if distracted
+      4. Notice breath sensations
+    difficulty: beginner
+  - id: q2
+    title: Body Scan Express
+    duration: 5
+    description: Rapid body awareness practice
+    instructions: |
+      1. Notice feet (1 min)
+      2. Scan up body
+      3. Release tension
+      4. End at crown
+    difficulty: beginner
+  - id: q3
+    title: Present Moment Reset
+    duration: 5
+    description: Quick grounding using senses
+    instructions: |
+      1. Name 5 things you see
+      2. 4 things you feel
+      3. 3 things you hear
+      4. 2 things you smell
+      5. 1 thing you taste
+    difficulty: beginner
+  - id: q4
+    title: Energy Boost
+    duration: 5
+    description: Energizing breath practice
+    instructions: |
+      1. Breathe in sharply
+      2. Exhale forcefully
+      3. 20 cycles
+      4. End with calm breaths
+    difficulty: intermediate
+  - id: m1
+    title: Loving-Kindness
+    duration: 15
+    description: Heart-centered meditation for compassion
+    instructions: |
+      1. Start with self (5 min)
+      2. Extend to loved one
+      3. Extend to neutral person
+      4. Extend to difficult person
+      5. Extend to all beings
+    difficulty: intermediate
+  - id: m2
+    title: Sound Meditation
+    duration: 10
+    description: Open awareness practice using sounds
+    instructions: |
+      1. Notice closest sounds
+      2. Middle distance sounds
+      3. Far away sounds
+      4. All sounds together
+      5. Return to breath
+    difficulty: intermediate
+  - id: m3
+    title: Walking Meditation
+    duration: 15
+    description: Mindful walking practice indoors or out
+    instructions: |
+      1. Walk very slowly
+      2. Notice foot sensations
+      3. Coordinate with breath
+      4. Add arm awareness
+      5. End standing still
+    difficulty: intermediate
+  - id: d1
+    title: Deep Insight
+    duration: 30
+    description: Extended practice for deeper awareness
+    instructions: |
+      1. Body scan (10 min)
+      2. Breath focus (10 min)
+      3. Open awareness (5 min)
+      4. Meta-awareness (5 min)
+    difficulty: advanced
+  - id: d2
+    title: Contemplative Inquiry
+    duration: 25
+    description: Self-inquiry meditation practice
+    instructions: |
+      1. Ground in body (5 min)
+      2. Ask "Who am I?" (10 min)
+      3. Rest in awareness (5 min)
+      4. Journal insights (5 min)
+    difficulty: advanced
+  - id: d3
+    title: Advanced Body Scan
+    duration: 35
+    description: Detailed somatic awareness practice
+    instructions: |
+      1. Systematic scan up (15 min)
+      2. Scan down (10 min)
+      3. Whole body awareness (5 min)
+      4. Integration (5 min)
+    difficulty: advanced

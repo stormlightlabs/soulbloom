@@ -1,0 +1,208 @@
+name: CBT
+description: Techniques to identify and reframe negative thought patterns.
+cards:
+  - id: tr1
+    title: Identifying Automatic Thoughts
+    duration: 10
+    difficulty: beginner
+    description: Learn to spot thoughts that pop up automatically in response to situations
+    instructions: Write down a situation and the immediate thoughts that came to mind
+
+  - id: tr2
+    title: Emotional Intensity Scale
+    duration: 5
+    difficulty: beginner
+    description: Rate the intensity of emotions associated with thoughts
+    instructions: Rate each emotion from 0-100 and track changes after reframing
+
+  - id: tr3
+    title: Evidence For and Against
+    duration: 15
+    difficulty: intermediate
+    description: Examine evidence supporting and challenging your thoughts
+    instructions: List factual evidence that supports and contradicts your thought
+
+  - id: tr4
+    title: Common Thinking Traps
+    duration: 10
+    difficulty: intermediate
+    description: Identify cognitive distortions in your thinking
+    instructions: Review the thought and identify any thinking traps like all-or-nothing thinking
+
+  - id: tr5
+    title: Alternative Perspectives
+    duration: 15
+    difficulty: intermediate
+    description: Generate different ways of viewing the situation
+    instructions: Write at least 3 alternative ways to interpret the same situation
+  - id: tr6
+    title: Behavioral Experiment
+    duration: 20
+    difficulty: hard
+    description: Test your thoughts through real-world experiments
+    instructions: Design and conduct a small experiment to test your prediction
+  - id: tr7
+    title: Thought Chain Analysis
+    duration: 15
+    difficulty: intermediate
+    description: Track how one thought leads to another
+    instructions: Map out the sequence of thoughts that follow your initial thought
+
+  - id: tr8
+    title: Core Belief Investigation
+    duration: 20
+    difficulty: hard
+    description: Identify and examine underlying core beliefs
+    instructions: Trace your automatic thoughts back to core beliefs about yourself/world
+
+  - id: tr9
+    title: Reframing Practice
+    duration: 15
+    difficulty: intermediate
+    description: Transform negative thoughts into balanced alternatives
+    instructions: Take a negative thought and create a more balanced, realistic version
+
+  - id: tr10
+    title: Future Projection
+    duration: 10
+    difficulty: intermediate
+    description: Examine thoughts about future events
+    instructions: Write predictions and examine evidence for/against them
+
+  - id: tr11
+    title: Emotion-Thought Connection
+    duration: 10
+    difficulty: beginner
+    description: Link specific emotions to specific thoughts
+    instructions: List emotions and identify the thoughts that trigger each one
+
+  - id: tr12
+    title: Worst-Case Scenario
+    duration: 15
+    difficulty: intermediate
+    description: Examine and cope with worst-case fears
+    instructions: Write worst fear and develop coping strategies for that scenario
+
+  - id: tr13
+    title: Cost-Benefit Analysis
+    duration: 15
+    difficulty: intermediate
+    description: Analyze pros and cons of holding onto a thought
+    instructions: List benefits and drawbacks of maintaining this belief
+
+  - id: tr14
+    title: Historical Evidence
+    duration: 15
+    difficulty: intermediate
+    description: Review past experiences that challenge negative thoughts
+    instructions: Find past examples that contradict your current negative thought
+
+  - id: tr15
+    title: Compassionate Response
+    duration: 10
+    difficulty: beginner
+    description: Practice self-compassion in response to negative thoughts
+    instructions: Write response to your thought as if speaking to a good friend
+  - id: ba1
+    title: Activity Monitoring
+    duration: 15
+    difficulty: beginner
+    description: Track daily activities and associated mood levels
+    instructions: Log activities and rate mood (0-10) for each hour of the day
+  - id: ba2
+    title: Values Assessment
+    duration: 20
+    difficulty: intermediate
+    description: Identify key life values to guide activity selection
+    instructions: List important life areas and values that matter to you
+
+  - id: ba3
+    title: Pleasant Activity Scheduling
+    duration: 10
+    difficulty: beginner
+    description: Plan enjoyable activities for the week
+    instructions: Schedule three enjoyable activities for specific times this week
+
+  - id: ba4
+    title: Graded Task Assignment
+    duration: 15
+    difficulty: intermediate
+    description: Break down complex tasks into manageable steps
+    instructions: Choose one avoided task and break it into 5 smaller steps
+
+  - id: ba5
+    title: Social Connection Planning
+    duration: 15
+    difficulty: intermediate
+    description: Plan meaningful social interactions
+    instructions: Identify and schedule two social activities for the week
+
+  - id: ba6
+    title: Success Log
+    duration: 10
+    difficulty: beginner
+    description: Document completed activities and their impact
+    instructions: Record completed activities and resulting mood changes
+
+  - id: ba7
+    title: Activity Hierarchy
+    duration: 20
+    difficulty: intermediate
+    description: Create difficulty hierarchy of avoided activities
+    instructions: List 10 activities from easiest to most challenging
+
+  - id: ba8
+    title: Routine Building
+    duration: 15
+    difficulty: intermediate
+    description: Establish healthy daily routines
+    instructions: Design morning or evening routine with 5 key activities
+
+  - id: ba9
+    title: Energy Management
+    duration: 15
+    difficulty: intermediate
+    description: Match activities to energy levels throughout day
+    instructions: Map energy levels and plan activities accordingly
+
+  - id: ba10
+    title: Reward Planning
+    duration: 10
+    difficulty: beginner
+    description: Set up rewards for completing challenging tasks
+    instructions: Choose appropriate rewards for different activity levels
+
+  - id: ba11
+    title: Activity Experimentation
+    duration: 20
+    difficulty: hard
+    description: Try new activities outside comfort zone
+    instructions: Select and try one new activity, record experience
+
+  - id: ba12
+    title: Balance Assessment
+    duration: 15
+    difficulty: intermediate
+    description: Evaluate life area activity balance
+    instructions: Rate activity levels across different life domains
+
+  - id: ba13
+    title: Motivation Building
+    duration: 15
+    difficulty: intermediate
+    description: Develop strategies to overcome inertia
+    instructions: List barriers and solutions for starting activities
+
+  - id: ba14
+    title: Progress Tracking
+    duration: 10
+    difficulty: beginner
+    description: Monitor activity implementation progress
+    instructions: Review and rate progress on planned activities
+
+  - id: ba15
+    title: Environmental Activation
+    duration: 20
+    difficulty: hard
+    description: Modify environment to support activity engagement
+    instructions: Identify and implement three environmental changes

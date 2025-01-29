@@ -2,8 +2,14 @@
 
 import 'package:flutter/material.dart';
 
+import '../../models/prompt_cards.dart';
+import '../../models/prompt_decks.dart';
+
 class PlayScreen extends StatelessWidget {
   const PlayScreen({super.key});
+
+  PromptCardDeckObject get currentDeck => promptDecks[0];
+  String get currentDeckName => promptDecks[0].name;
 
   @override
   Widget build(BuildContext context) {
@@ -16,16 +22,9 @@ class PlayScreen extends StatelessWidget {
           children: [
             Title(color: Colors.white, child: Text("Good morning, ")),
             Title(color: Colors.white, child: Text("Player")),
-            Icon(
-              Icons.settings,
-              color: Colors.white,
-              size: 20,
-            ),
           ],
         ),
-        Center(
-          child: Text("Deck Name"),
-        ),
+        _buildCurrentDeckRow(),
         _gap,
         Center(
           child: Stack(
@@ -49,10 +48,26 @@ class PlayScreen extends StatelessWidget {
           ),
         ),
         _gap,
-        Text("Deck Description"),
+        Container(
+          padding: EdgeInsets.all(24.0),
+          child: Text(currentDeck.description),
+        )
       ],
     );
   }
 
   static const _gap = SizedBox(height: 10);
+
+  Widget _buildCurrentDeckRow() {
+    return Container(
+      padding: EdgeInsets.all(12.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text("Current Deck: "),
+          Text(currentDeckName, style: TextStyle(fontStyle: FontStyle.italic))
+        ],
+      ),
+    );
+  }
 }

@@ -1,0 +1,153 @@
+name: "ACT"
+description: "Acceptance and Commitment Therapy (ACT) is a type of cognitive-behavioral therapy that focuses on developing psychological flexibility and values-based living. These cards offer practical exercises to develop mindfulness, acceptance, and commitment to personal values."
+cards:
+  - id: val1
+    title: Values vs Goals
+    duration: 15
+    difficulty: intermediate
+    description: Distinguish between values and goals
+    instructions: List ongoing values and specific goals for each life domain
+  - id: val2
+    title: Life Compass
+    duration: 20
+    difficulty: intermediate
+    description: Map values across key life domains
+    instructions: Rate importance and current living in each value domain
+  - id: val3
+    title: Eulogy Exercise
+    duration: 20
+    difficulty: hard
+    description: Envision desired legacy and core values
+    instructions: Write your ideal eulogy focusing on what truly mattered
+  - id: val4
+    title: Values Barriers
+    duration: 15
+    difficulty: intermediate
+    description: Identify obstacles to values-based living
+    instructions: List internal/external barriers for each valued direction
+  - id: val5
+    title: Role Models
+    duration: 10
+    difficulty: beginner
+    description: Explore values through admired others
+    instructions: Identify role models and their embodied values
+  - id: val6
+    title: Peak Experiences
+    duration: 15
+    difficulty: intermediate
+    description: Extract values from meaningful life moments
+    instructions: Analyze peak experiences for underlying values
+  - id: val7
+    title: Values in Action
+    duration: 10
+    difficulty: beginner
+    description: Plan concrete values-aligned behaviors
+    instructions: Choose three specific actions that express your values
+  - id: val8
+    title: Childhood Dreams
+    duration: 15
+    difficulty: intermediate
+    description: Connect with early values and aspirations
+    instructions: Explore childhood dreams for enduring values
+  - id: val9
+    title: Values Cards
+    duration: 20
+    difficulty: intermediate
+    description: Sort and prioritize personal values
+    instructions: Rank provided value cards by personal importance
+  - id: val10
+    title: Values Conflicts
+    duration: 20
+    difficulty: hard
+    description: Navigate competing values
+    instructions: Identify and resolve conflicts between different values
+  - id: ca1
+    title: SMART Goals
+    duration: 15
+    difficulty: intermediate
+    description: Create specific, measurable, achievable, relevant, time-bound goals
+    instructions: Set one SMART goal aligned with chosen value
+  - id: ca2
+    title: Stepping Stones
+    duration: 10
+    difficulty: beginner
+    description: Break larger commitments into manageable steps
+    instructions: Create action sequence from smallest to largest step
+  - id: ca3
+    title: Obstacle Planning
+    duration: 15
+    difficulty: intermediate
+    description: Anticipate and prepare for barriers to action
+    instructions: List potential obstacles and specific countermeasures
+  - id: ca4
+    title: Success Tracking
+    duration: 10
+    difficulty: beginner
+    description: Monitor progress on committed actions
+    instructions: Record completed actions and their outcomes
+  - id: ca5
+    title: Willingness Scale
+    duration: 10
+    difficulty: beginner
+    description: Rate readiness to take action despite discomfort
+    instructions: Scale willingness 0-10 and identify next workable step
+  - id: ca6
+    title: Action Contracts
+    duration: 15
+    difficulty: intermediate
+    description: Create formal commitment to value-based actions
+    instructions: Write specific action contract with accountability plan
+  - id: ca7
+    title: Pattern Breaking
+    duration: 20
+    difficulty: hard
+    description: Identify and modify avoidance patterns
+    instructions: Choose one pattern to change through committed action
+  - id: ca8
+    title: Mindful Action
+    duration: 15
+    difficulty: intermediate
+    description: Practice present-focused engagement in activities
+    instructions: Complete routine task with full mindful attention
+  - id: ca9
+    title: Values Integration
+    duration: 15
+    difficulty: intermediate
+    description: Connect daily actions to larger values
+    instructions: Link three daily activities to core values
+  - id: ca10
+    title: Flexible Planning
+    duration: 20
+    difficulty: hard
+    description: Develop adaptable action strategies
+    instructions: Create primary and backup plans for valued action
+  - id: ca11
+    title: Reinforcement Planning
+    duration: 15
+    difficulty: intermediate
+    description: Set up support systems for sustained action
+    instructions: Design environment and rewards to support commitments
+  - id: ca12
+    title: Progress Review
+    duration: 10
+    difficulty: beginner
+    description: Evaluate and adjust action plans
+    instructions: Review recent actions and modify future plans
+  - id: ca13
+    title: Social Support
+    duration: 15
+    difficulty: intermediate
+    description: Engage others in supporting committed action
+    instructions: Identify and request specific support from others
+  - id: ca14
+    title: Recovery Plan
+    duration: 15
+    difficulty: intermediate
+    description: Develop strategies for getting back on track
+    instructions: Create plan for recovering from setbacks
+  - id: ca15
+    title: Impact Assessment
+    duration: 20
+    difficulty: hard
+    description: Evaluate effects of committed actions
+    instructions: Analyze how actions affect self and others

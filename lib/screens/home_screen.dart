@@ -1,6 +1,7 @@
 // Copyright 2025, Stormlight Labs
 
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
@@ -16,11 +17,11 @@ import 'settings/settings.dart';
 /// This screen is the first screen the user sees when they open the app.
 ///
 /// Options: Start, Settings, About, Github, Exit
-class MainMenuScreen extends StatelessWidget {
+class MainMenuScreen extends ConsumerWidget {
   const MainMenuScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final palette = context.watch<Palette>();
     final settingsController = context.watch<SettingsController>();
     final audioController = context.watch<AudioController>();
@@ -53,7 +54,7 @@ class MainMenuScreen extends StatelessWidget {
               ActionButton(
                   onPressed: () {
                     audioController.playSfx(SfxType.buttonTap);
-                    GoRouter.of(context).go('/app');
+                    GoRouter.of(context).go('/play');
                   },
                   child: Text(
                     'Play',
