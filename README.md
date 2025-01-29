@@ -3,6 +3,10 @@
 Soulbloom is a cross-platform app that has decks of prompt and action cards
 to help you reflect and grow.
 
+| Start | Deck List | Card Browser |
+|-------|---------|----------|
+| ![Start](docs/screenshot_start.png) | ![Deck Browser](docs/screenshot_browser_decks.png) | ![Deck Browser](docs/screenshot_browser_dbt.png) |
+
 ## Overview
 
 There are six decks of cards in Soulbloom:
@@ -30,6 +34,13 @@ Card data is currently stored in the `assets/data` directory as a collection of
     - See [cookbook](https://flutter.dev/docs/cookbook/persistence/sqlite) for more information
 - [ ] Scaffold `sqflite` implementation
 - [ ] Add custom deck creation
+
+### Ideas
+
+- [ ] Conversation starters
+    - [ ] Family
+    - [ ] Friends
+    - [ ] Partners
 
 ## Resources
 
