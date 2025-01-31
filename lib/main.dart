@@ -25,6 +25,7 @@ void main() async {
       name: record.loggerName,
     );
   });
+
   WidgetsFlutterBinding.ensureInitialized();
 
   await SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
@@ -42,8 +43,6 @@ class MyApp extends StatelessWidget {
   TextStyle get _ptMono => GoogleFonts.ptMono();
 
   TextStyle get _dmSans => GoogleFonts.dmSans();
-
-  TextStyle get _jetBrainsMono => GoogleFonts.jetBrainsMono();
 
   TextStyle get _bodyStyle {
     return TextStyle(
@@ -76,6 +75,8 @@ class MyApp extends StatelessWidget {
       colorScheme: ColorScheme.fromSeed(
         seedColor: Colors.blue[800]!,
         surface: Color(0xff84a98c),
+        onSecondary: Colors.white,
+        secondary: Colors.blueAccent,
       ),
       textTheme: TextTheme(
         displayLarge: _displayStyle.copyWith(
@@ -90,20 +91,20 @@ class MyApp extends StatelessWidget {
         ),
         displayMedium: _displayStyle.copyWith(fontSize: 48),
         displaySmall: _displayStyle.copyWith(fontSize: 32),
-        labelLarge: _labelStyle.copyWith(fontSize: 32),
-        labelMedium: _labelStyle.copyWith(fontSize: 24),
-        labelSmall: _labelStyle.copyWith(fontSize: 16),
-        titleLarge: TextStyle(
-          fontFamily: _jetBrainsMono.fontFamily,
-          fontWeight: FontWeight.bold,
-          color: Colors.white,
-          height: 1.1,
-          letterSpacing: -1.5,
-          fontSize: 32,
-        ),
+        labelLarge: _labelStyle.copyWith(fontSize: 24),
+        labelMedium: _labelStyle.copyWith(fontSize: 16),
+        labelSmall: _labelStyle.copyWith(fontSize: 12),
         bodyLarge: _bodyStyle.copyWith(fontSize: 16),
         bodyMedium: _bodyStyle.copyWith(fontSize: 14),
         bodySmall: _bodyStyle.copyWith(fontSize: 12),
+        titleLarge: TextStyle(
+          fontFamily: _ptMono.fontFamily,
+          fontWeight: FontWeight.bold,
+          color: Colors.white,
+          height: 1.1,
+          letterSpacing: -0.5,
+          fontSize: 32,
+        ),
       ),
       useMaterial3: true,
     ).copyWith(

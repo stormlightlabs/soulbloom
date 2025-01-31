@@ -4,20 +4,20 @@ import 'package:soulbloom/models/prompt_cards.dart';
 import 'package:yaml/yaml.dart';
 
 class DeckContainer {
-  final PromptCardDeckObject actDeck;
-  final PromptCardDeckObject cbtDeck;
-  final PromptCardDeckObject dbtDeck;
   final PromptCardDeckObject creativityDeck;
   final PromptCardDeckObject movementDeck;
   final PromptCardDeckObject rechargeDeck;
+  final PromptCardDeckObject actDeck;
+  final PromptCardDeckObject cbtDeck;
+  final PromptCardDeckObject dbtDeck;
 
   const DeckContainer({
-    required this.actDeck,
-    required this.cbtDeck,
-    required this.dbtDeck,
     required this.creativityDeck,
     required this.movementDeck,
     required this.rechargeDeck,
+    required this.actDeck,
+    required this.cbtDeck,
+    required this.dbtDeck,
   });
 
   factory DeckContainer.fromMapping(Map<String, PromptCardDeckObject> data) {
@@ -32,12 +32,12 @@ class DeckContainer {
   }
 
   List<PromptCardDeckObject> toList() => [
-        actDeck,
-        cbtDeck,
-        dbtDeck,
         creativityDeck,
         movementDeck,
         rechargeDeck,
+        actDeck,
+        cbtDeck,
+        dbtDeck,
       ];
 
   PromptCardDeckObject getDeck(DeckType type) {
@@ -74,6 +74,7 @@ class DecksNotifier extends AsyncNotifier<DeckContainer> {
           name: data["name"] as String,
           description: data["description"] as String,
           filepath: filepath,
+          type: element,
         );
 
         currentDeck.cardSet = ((data["cards"] as YamlList).map(

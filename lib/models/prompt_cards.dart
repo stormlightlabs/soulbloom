@@ -6,12 +6,14 @@ class PromptCardDeckObject {
   String name;
   String description;
   String filepath;
+  DeckType type;
   List<PromptCardObject> cards = [];
 
   PromptCardDeckObject({
     required this.name,
     required this.description,
     required this.filepath,
+    required this.type,
     this.cards = const [],
   });
 
@@ -37,6 +39,7 @@ class PromptCardDeckObject {
       name: deck.name,
       description: deck.description,
       filepath: deck.filepath,
+      type: deck.type,
       cards: shuffledCards,
     );
   }
@@ -85,9 +88,9 @@ enum DeckType {
 
   factory DeckType.reverse(String deckName) {
     switch (deckName) {
-      case "Creativity":
+      case "Creativity & Innovation":
         return DeckType.creativity;
-      case 'Motivation & Movement':
+      case 'Movement & Motivation':
         return DeckType.movement;
       case 'Rest & Recharge':
         return DeckType.rest;
@@ -102,8 +105,9 @@ enum DeckType {
     }
   }
 
-  factory DeckType.fromId(String id) {
-    final String filename = "$id.yml";
+  factory DeckType.fromId(String id) => DeckType.fromFilename("$id.yml");
+
+  factory DeckType.fromFilename(String filename) {
     switch (filename) {
       case "creativity.yml":
         return DeckType.creativity;
@@ -184,38 +188,19 @@ enum DeckType {
   Color get bgColor {
     switch (this) {
       case DeckType.creativity:
-        return Colors.purple[700]!;
+        return Colors.red[700]!;
       case DeckType.movement:
-        return Colors.green[600]!;
+        return Colors.deepOrange[700]!;
       case DeckType.rest:
         return Colors.blue[700]!;
       case DeckType.act:
-        return Colors.orange[700]!;
+        return Colors.deepPurple[700]!;
       case DeckType.dbt:
-        return Colors.teal[600]!;
+        return Colors.teal[700]!;
       case DeckType.cbt:
-        return Colors.indigo[600]!;
+        return Colors.indigo[700]!;
       default:
         return Colors.black87;
-    }
-  }
-
-  Color get color {
-    switch (this) {
-      case DeckType.creativity:
-        return Colors.purpleAccent;
-      case DeckType.movement:
-        return Colors.greenAccent;
-      case DeckType.rest:
-        return Colors.blueAccent;
-      case DeckType.act:
-        return Colors.orangeAccent;
-      case DeckType.dbt:
-        return Colors.tealAccent;
-      case DeckType.cbt:
-        return Colors.indigoAccent;
-      default:
-        return Colors.lightBlueAccent;
     }
   }
 

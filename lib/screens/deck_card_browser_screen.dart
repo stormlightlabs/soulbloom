@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../models/prompt_cards.dart';
 import '../models/prompt_deck_provider.dart';
+import '../widgets/common.dart';
 
 class DeckBrowserScreen extends ConsumerWidget {
   final String id;
@@ -35,9 +36,10 @@ class DeckBrowserScreen extends ConsumerWidget {
               child: Text(
                 currentDeck.description,
                 style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: GoogleFonts.comingSoon().fontFamily),
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: GoogleFonts.comingSoon().fontFamily,
+                ),
               ),
             ),
             ListView.builder(
@@ -114,10 +116,7 @@ class GameCardListTile extends StatelessWidget {
 class GameCardDetailModal extends StatelessWidget {
   final PromptCardObject card;
 
-  const GameCardDetailModal({
-    super.key,
-    required this.card,
-  });
+  const GameCardDetailModal({super.key, required this.card});
 
   @override
   Widget build(BuildContext context) {
@@ -139,19 +138,19 @@ class GameCardDetailModal extends StatelessWidget {
                 ),
                 child: Icon(Icons.bolt_outlined, size: 48, color: Colors.amber),
               ),
-              _gap(),
+              Common.gap(h: 16),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(card.title, style: TextStyle(color: Colors.amber)),
-                    _gap(divisor: 2),
+                    Common.gap(h: 16, div: 2),
                   ],
                 ),
               ),
             ],
           ),
-          _gap(),
+          Common.gap(h: 16),
           Card(
             color: Colors.yellow[200],
             child: Padding(
@@ -169,7 +168,7 @@ class GameCardDetailModal extends StatelessWidget {
               ),
             ),
           ),
-          _gap(),
+          Common.gap(h: 16),
           ElevatedButton(
             onPressed: () => Navigator.pop(context),
             style: ElevatedButton.styleFrom(
@@ -183,6 +182,4 @@ class GameCardDetailModal extends StatelessWidget {
       ),
     );
   }
-
-  Widget _gap({int divisor = 1}) => SizedBox(height: (16 / divisor));
 }

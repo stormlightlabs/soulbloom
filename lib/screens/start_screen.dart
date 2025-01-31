@@ -10,6 +10,7 @@ import '../audio/sounds.dart';
 import '../models/controllers/audio_controller.dart';
 import '../models/controllers/settings_controller.dart';
 import '../widgets/action_button.dart';
+import '../widgets/common.dart';
 import 'responsive_screen.dart';
 
 /// Main Menu/Home Screen
@@ -51,12 +52,12 @@ class MainMenuScreen extends ConsumerWidget {
                 },
                 child: Text('Start', style: theme.titleLarge),
               ),
-              _gap,
+              Common.gap(),
               ActionButton(
                 onPressed: () => GoRouter.of(context).push('/settings'),
                 child: Text('Settings', style: theme.titleLarge),
               ),
-              _gap,
+              Common.gap(),
               Padding(
                 padding: const EdgeInsets.only(top: 32),
                 child: ValueListenableBuilder<bool>(
@@ -71,8 +72,8 @@ class MainMenuScreen extends ConsumerWidget {
                   ),
                 ),
               ),
-              _gap,
-              _gap,
+              Common.gap(),
+              Common.gap(),
               Text(
                 'v0.1.0 by Stormlight Labs',
                 textAlign: TextAlign.center,
@@ -81,37 +82,24 @@ class MainMenuScreen extends ConsumerWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Link(
-                    uri: Uri.parse('https://stormlightlabs.org'),
-                    builder: (BuildContext context, FollowLink? followLink) {
-                      return TextButton(
-                        onPressed: followLink,
-                        child: Text(
-                          "Our website",
-                          style: theme.labelSmall!.copyWith(
-                            shadows: [
-                              BoxShadow(
-                                  blurRadius: 12, color: Colors.green[900]!),
-                            ],
-                          ),
-                        ),
-                      );
-                    },
+                  _buildLink(
+                    "Our website",
+                    'https://stormlightlabs.org',
+                    theme.labelSmall!.copyWith(
+                      shadows: [
+                        BoxShadow(blurRadius: 12, color: Colors.green[900]!),
+                      ],
+                    ),
                   ),
                   Text(' | ', style: theme.labelSmall),
-                  Link(
-                    uri: Uri.parse(
-                        'https://github.com/stormlightlabs/soulbloom'),
-                    builder: (BuildContext context, FollowLink? followLink) {
-                      return TextButton(
-                        onPressed: followLink,
-                        child: Text("Source code", style: theme.labelSmall),
-                      );
-                    },
+                  _buildLink(
+                    "Source code",
+                    'https://github.com/stormlightlabs/soulbloom',
+                    theme.labelSmall!,
                   ),
                 ],
               ),
-              _gap,
+              Common.gap(),
             ],
           ),
         ),
@@ -119,5 +107,15 @@ class MainMenuScreen extends ConsumerWidget {
     );
   }
 
-  static const _gap = SizedBox(height: 10);
+  Widget _buildLink(String text, String url, TextStyle style) {
+    return Link(
+      uri: Uri.parse(url),
+      builder: (BuildContext context, FollowLink? followLink) {
+        return TextButton(
+          onPressed: followLink,
+          child: Text(text, style: style),
+        );
+      },
+    );
+  }
 }

@@ -1,6 +1,4 @@
-// Copyright 2022, the Flutter project authors. Please see the AUTHORS file
-// for details. All rights reserved. Use of this source code is governed by a
-// BSD-style license that can be found in the LICENSE file.
+// Copyright 2025, Stormlight Labs
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -9,13 +7,13 @@ import 'package:soulbloom/models/persistence/settings_persistence.dart';
 
 import '../models/controllers/settings_controller.dart';
 import '../widgets/action_button.dart';
+import '../widgets/common.dart';
 import '../widgets/custom_name_dialog.dart';
 import 'responsive_screen.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
 
-  static const _gap = SizedBox(height: 60);
   static const _bgImage = AssetImage("assets/images/settings-bg.png");
 
   @override
@@ -31,7 +29,7 @@ class SettingsScreen extends StatelessWidget {
         body: ResponsiveScreen(
           squarishMainArea: ListView(
             children: [
-              _gap,
+              Common.gap(h: 60),
               const Text(
                 'Settings',
                 textAlign: TextAlign.center,
@@ -42,9 +40,9 @@ class SettingsScreen extends StatelessWidget {
                   color: Colors.white,
                 ),
               ),
-              _gap,
+              Common.gap(h: 60),
               const _NameChangeLine(),
-              _gap,
+              Common.gap(h: 60),
               const _DifficultyChangeLine(),
               ValueListenableBuilder<bool>(
                 valueListenable: settings.soundOn,
