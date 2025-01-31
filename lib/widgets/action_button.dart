@@ -4,8 +4,6 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-import '../models/palette.dart';
-
 class ActionButton extends StatefulWidget {
   final Widget child;
   final VoidCallback? onPressed;
@@ -18,7 +16,6 @@ class ActionButton extends StatefulWidget {
 
 class _ActionButtonState extends State<ActionButton>
     with SingleTickerProviderStateMixin {
-  final Palette palette = Palette();
   late final AnimationController _controller = AnimationController(
     duration: const Duration(milliseconds: 300),
     vsync: this,
@@ -32,22 +29,16 @@ class _ActionButtonState extends State<ActionButton>
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context).textTheme;
     return MouseRegion(
-      onEnter: (event) {
-        _controller.repeat();
-      },
-      onExit: (event) {
-        _controller.stop(canceled: false);
-      },
+      onEnter: (event) => _controller.repeat(),
+      onExit: (event) => _controller.stop(canceled: false),
       child: RotationTransition(
         turns: _controller.drive(const _MySineTween(0.005)),
         child: FilledButton(
           style: ButtonStyle(
             textStyle: WidgetStateProperty.fromMap({
-              WidgetState.any: TextStyle(
-                fontSize: 30,
-                fontFamily: "Jersey 15",
-              ),
+              WidgetState.any: theme.labelLarge,
             }),
             padding: WidgetStateProperty.fromMap({
               WidgetState.any: EdgeInsets.symmetric(
@@ -56,7 +47,7 @@ class _ActionButtonState extends State<ActionButton>
               ),
             }),
             backgroundColor: WidgetStateColor.fromMap({
-              WidgetState.any: palette.buttonBackground.withValues(alpha: 0.75),
+              WidgetState.any: Color(0xff354f52).withValues(alpha: 0.85),
             }),
           ),
           onPressed: widget.onPressed,

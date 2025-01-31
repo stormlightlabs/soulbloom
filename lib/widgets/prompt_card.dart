@@ -86,10 +86,7 @@ class PromptCardWidget extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    Text(
-                      deckName,
-                      style: TextStyle(fontSize: 16),
-                    ),
+                    Text(deckName, style: TextStyle(fontSize: 16)),
                   ],
                 ),
               ),

@@ -7,7 +7,7 @@ import 'package:soulbloom/screens/deck_selection_screen.dart';
 import 'package:soulbloom/screens/journal_screen.dart';
 import 'package:soulbloom/screens/main_screen.dart';
 
-import '../screens/settings/settings_screen.dart';
+import '../screens/settings_screen.dart';
 import '../screens/start_screen.dart';
 import 'navigation_shell.dart';
 

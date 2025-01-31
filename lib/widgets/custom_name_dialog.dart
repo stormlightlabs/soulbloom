@@ -6,13 +6,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
-import 'settings.dart';
+import '../models/controllers/settings_controller.dart';
 
 void showCustomNameDialog(BuildContext context) {
   showGeneralDialog(
-      context: context,
-      pageBuilder: (context, animation, secondaryAnimation) =>
-          CustomNameDialog(animation: animation));
+    context: context,
+    pageBuilder: (context, animation, secondaryAnimation) {
+      return CustomNameDialog(animation: animation);
+    },
+  );
 }
 
 class CustomNameDialog extends StatefulWidget {
@@ -29,6 +31,7 @@ class _CustomNameDialogState extends State<CustomNameDialog> {
 
   @override
   Widget build(BuildContext context) {
+    final SettingsController settings = context.read<SettingsController>();
     return ScaleTransition(
       scale: CurvedAnimation(
         parent: widget.animation,
@@ -45,17 +48,12 @@ class _CustomNameDialogState extends State<CustomNameDialog> {
             textAlign: TextAlign.center,
             textCapitalization: TextCapitalization.words,
             textInputAction: TextInputAction.done,
-            onChanged: (value) {
-              context.read<SettingsController>().setPlayerName(value);
-            },
-            onSubmitted: (value) {
-              // Player tapped 'Submit'/'Done' on their keyboard.
-              Navigator.pop(context);
-            },
+            onChanged: (value) => settings.saveUsername(value),
+            onSubmitted: (value) => Navigator.pop(context),
           ),
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('Close'),
+            child: Text('Close'),
           ),
         ],
       ),
@@ -71,6 +69,6 @@ class _CustomNameDialogState extends State<CustomNameDialog> {
   @override
   void initState() {
     super.initState();
-    _controller.text = context.read<SettingsController>().playerName.value;
+    _controller.text = context.read<SettingsController>().username.value;
   }
 }

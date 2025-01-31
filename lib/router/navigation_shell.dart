@@ -20,8 +20,11 @@ class SoulbloomShell extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text("Soulbloom"),
-        automaticallyImplyLeading: false,
+        title: Text(
+          "Soulbloom",
+          style: Theme.of(context).textTheme.displaySmall,
+        ),
+        automaticallyImplyLeading: true,
       ),
       body: navigationShell,
       bottomNavigationBar: _buildNavigation(),
@@ -30,22 +33,21 @@ class SoulbloomShell extends StatelessWidget {
 
   Widget _buildNavigation() {
     return NavigationBar(
-      backgroundColor: Color(0xFF4f8fba),
+      backgroundColor: Color(0xFF059669),
       selectedIndex: navigationShell.currentIndex,
       onDestinationSelected: _goBranch,
       destinations: const [
+        NavigationDestination(icon: Icon(Icons.play_arrow), label: "Play"),
         NavigationDestination(
-          icon: Icon(Icons.play_arrow),
-          label: "Play",
+          icon: Icon(Icons.collections_bookmark),
+          label: "Browser",
+          tooltip: "View your cards",
         ),
         NavigationDestination(
-            icon: Icon(Icons.collections_bookmark),
-            label: "Browser",
-            tooltip: "View your cards"),
-        NavigationDestination(
-            icon: Icon(Icons.my_library_books_sharp),
-            label: "Journal",
-            tooltip: "Your notes and settings"),
+          icon: Icon(Icons.my_library_books_sharp),
+          label: "Journal",
+          tooltip: "Your notes and settings",
+        ),
       ],
     );
   }

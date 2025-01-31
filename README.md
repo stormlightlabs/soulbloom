@@ -44,10 +44,11 @@ Card data is currently stored in the `assets/data` directory as a collection of
 
 ## Resources
 
-[Color Scheme](https://lospec.com/palette-list/apollo): Apollo
-[Inspiration](https://theherosjournal.co/pages/sqd-lander):
-The Hero's Journal SideQuest Decks
-[Itch.io](https://itch.io/): For pixel art assets
+- [Color Scheme](https://lospec.com/palette-list/apollo): Apollo
+- [Inspiration](https://theherosjournal.co/pages/sqd-lander):
+    - The Hero's Journal SideQuest Decks
+    - [Itch.io](https://itch.io/): For pixel art assets
+- [Free Music Archive](https://freemusicarchive.org/): For background music
 
 ## License
 

@@ -13,14 +13,23 @@ class PlayScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final decksAsync = ref.watch(decksProvider);
+    final type = DeckType.random();
+    final theme = Theme.of(context).textTheme;
     return decksAsync.when(
       loading: () => CircularProgressIndicator(),
       error: (err, stack) => Text('Error: $err'),
       data: (decks) {
-        final type = DeckType.random();
         final PromptCardDeckObject deck = decks.getDeck(type);
         return Scaffold(
-          appBar: AppBar(title: Text("Shuffle and Draw")),
+          appBar: AppBar(
+            title: Text(
+              "Shuffle and Draw",
+              style: theme.bodyLarge!.copyWith(
+                fontSize: 32,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
           resizeToAvoidBottomInset: false,
           body: SingleChildScrollView(child: _buildScreenLayout(deck)),
         );
@@ -28,7 +37,6 @@ class PlayScreen extends ConsumerWidget {
     );
   }
 
-  // NOTE: move to helper module
   Widget get _gap => SizedBox(height: 10);
 
   Widget _buildScreenLayout(PromptCardDeckObject currentDeck) {
@@ -98,10 +106,16 @@ class PlayScreen extends ConsumerWidget {
 
   Widget _buildCardFooter(PromptCardObject card) {
     final style = TextStyle(
-      fontSize: 12,
-      fontFamily: GoogleFonts.roboto().fontFamily,
-      fontWeight: FontWeight.bold,
-    );
+        fontSize: 12,
+        fontFamily: GoogleFonts.dmSans().fontFamily,
+        fontWeight: FontWeight.bold,
+        shadows: [
+          BoxShadow(
+            color: Colors.black,
+            blurRadius: 1,
+            offset: Offset(1, 1),
+          ),
+        ]);
     final duration = card.duration.toString();
     final difficulty = titleCase(card.difficulty);
     return Container(
@@ -117,7 +131,6 @@ class PlayScreen extends ConsumerWidget {
     );
   }
 
-  // NOTE: move to helper module
   String titleCase(String text) {
     return text[0].toUpperCase() + text.substring(1).toLowerCase();
   }
