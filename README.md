@@ -52,6 +52,6 @@ Card data is currently stored in the `assets/data` directory as a collection of
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the Mozilla Public License - see the [LICENSE](LICENSE) file for details.
 
 Made by [Stormlight Labs](https://stormlightlabs.org)
