@@ -3,13 +3,13 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
-import 'package:soulbloom/models/persistence/settings_persistence.dart';
 
-import '../models/controllers/settings_controller.dart';
+import '../../models/controllers/settings_controller.dart';
+import '../../models/persistence/settings_persistence.dart';
 import '../widgets/action_button.dart';
 import '../widgets/common.dart';
 import '../widgets/custom_name_dialog.dart';
-import 'responsive_screen.dart';
+import './responsive_screen.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});

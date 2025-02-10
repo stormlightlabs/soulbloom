@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:soulbloom/models/prompt_cards.dart';
+
+import '../../models/prompt_cards.dart';
 
 class PromptCardWidget extends StatelessWidget {
   final PromptCardObject promptCard;

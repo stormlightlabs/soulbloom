@@ -2,13 +2,13 @@
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:soulbloom/screens/deck_card_browser_screen.dart';
-import 'package:soulbloom/screens/deck_selection_screen.dart';
-import 'package:soulbloom/screens/journal_screen.dart';
-import 'package:soulbloom/screens/main_screen.dart';
 
-import '../screens/settings_screen.dart';
-import '../screens/start_screen.dart';
+import '../ui/screens/deck_card_browser_screen.dart';
+import '../ui/screens/deck_selection_screen.dart';
+import '../ui/screens/journal_screen.dart';
+import '../ui/screens/main_screen.dart';
+import '../ui/screens/settings_screen.dart';
+import '../ui/screens/start_screen.dart';
 import 'navigation_shell.dart';
 
 final GlobalKey<NavigatorState> _rootNavigatorKey = GlobalKey<NavigatorState>();

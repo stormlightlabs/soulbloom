@@ -1,7 +1,8 @@
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:soulbloom/models/prompt_cards.dart';
 import 'package:yaml/yaml.dart';
+
+import './prompt_cards.dart';
 
 class DeckContainer {
   final PromptCardDeckObject creativityDeck;

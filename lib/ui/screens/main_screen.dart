@@ -3,12 +3,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:soulbloom/screens/settings_screen.dart';
 
-import '../models/prompt_cards.dart';
-import '../models/prompt_deck_provider.dart';
+import '../../models/prompt_cards.dart';
+import '../../models/prompt_deck_provider.dart';
 import '../widgets/common.dart';
 import '../widgets/expandable_fab.dart';
+import './settings_screen.dart';
 
 enum ActionTitles {
   progress,

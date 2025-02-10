@@ -6,9 +6,9 @@ import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/link.dart';
 
-import '../audio/sounds.dart';
-import '../models/controllers/audio_controller.dart';
-import '../models/controllers/settings_controller.dart';
+import '../../audio/sounds.dart';
+import '../../models/controllers/audio_controller.dart';
+import '../../models/controllers/settings_controller.dart';
 import '../widgets/action_button.dart';
 import '../widgets/common.dart';
 import 'responsive_screen.dart';

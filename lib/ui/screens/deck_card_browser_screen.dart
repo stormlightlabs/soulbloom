@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../models/prompt_cards.dart';
-import '../models/prompt_deck_provider.dart';
+import '../../models/prompt_cards.dart';
+import '../../models/prompt_deck_provider.dart';
 import '../widgets/common.dart';
 
 class DeckBrowserScreen extends ConsumerWidget {

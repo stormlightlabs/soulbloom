@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '../models/prompt_cards.dart';
+import '../../models/prompt_cards.dart';
 
 class PromptCardDeck extends StatefulWidget {
   final String deckName;
