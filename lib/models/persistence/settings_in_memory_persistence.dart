@@ -1,20 +1,25 @@
 // Copyright 2025, Stormlight Labs
 
-import 'settings_persistence.dart';
+import 'package:soulbloom/models/prompt_cards.dart';
+
+import 'settings_base_persistence.dart';
 
 /// Useful for testing.
 class InMemSettingsPersistence extends BaseSettingsPersistence {
   String? _username;
   Difficulty? _difficulty;
+  DeckType? _deckType;
   int? _maxDuration;
   String? _timezone;
   bool _hapticsOn = false;
   bool _soundOn = true;
 
   @override
-  Future<String> getUsername({required String defaultValue}) async {
-    return _username ?? defaultValue;
-  }
+  Future<String?> getUsername({String? defaultValue}) async =>
+      _username ?? defaultValue;
+
+  @override
+  Future<DeckType?> getDefaultDeck() async => _deckType;
 
   @override
   Future<Difficulty> getDifficulty({required Difficulty defaultValue}) async {
@@ -66,4 +71,9 @@ class InMemSettingsPersistence extends BaseSettingsPersistence {
 
   @override
   Future<bool> getSoundOn({required bool defaultValue}) async => _soundOn;
+
+  @override
+  Future<void> setDefaultDeck(DeckType? deckType) async {
+    _deckType = deckType ?? DeckType.rest;
+  }
 }

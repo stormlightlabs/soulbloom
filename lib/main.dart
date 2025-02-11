@@ -5,7 +5,7 @@ import 'dart:developer' as dev;
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart' as river;
+import 'package:flutter_riverpod/flutter_riverpod.dart' as r;
 import 'package:google_fonts/google_fonts.dart';
 import 'package:logging/logging.dart';
 import 'package:provider/provider.dart';
@@ -34,10 +34,10 @@ void main() async {
     DeviceOrientation.portraitDown,
   ]);
 
-  runApp(river.ProviderScope(child: MyApp()));
+  runApp(r.ProviderScope(child: MyApp()));
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends r.ConsumerWidget {
   const MyApp({super.key});
 
   TextStyle get _ptMono => GoogleFonts.ptMono();
@@ -117,7 +117,7 @@ class MyApp extends StatelessWidget {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, r.WidgetRef ref) {
     return AppLifecycleObserver(
       child: MultiProvider(
         providers: [
@@ -133,13 +133,15 @@ class MyApp extends StatelessWidget {
             lazy: false,
           ),
         ],
-        child: Builder(builder: (context) {
-          return MaterialApp.router(
-            title: 'Soulbloom',
-            theme: _theme,
-            routerConfig: router,
-          );
-        }),
+        child: Builder(
+          builder: (context) {
+            return MaterialApp.router(
+              title: 'Soulbloom',
+              theme: _theme,
+              routerConfig: router,
+            );
+          },
+        ),
       ),
     );
   }

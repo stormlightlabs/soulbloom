@@ -3,6 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import 'package:soulbloom/models/controllers/settings_controller.dart';
 
 import '../../models/prompt_cards.dart';
 import '../../models/prompt_deck_provider.dart';
@@ -71,6 +73,8 @@ class PlayScreen extends ConsumerWidget {
     final decksAsync = ref.watch(decksProvider);
     final type = DeckType.random();
     final theme = Theme.of(context).textTheme;
+    final settings = context.watch<SettingsController>();
+
     return decksAsync.when(
       loading: () => CircularProgressIndicator(),
       error: (err, stack) => Text('Error: $err'),
@@ -87,7 +91,12 @@ class PlayScreen extends ConsumerWidget {
             ),
           ),
           resizeToAvoidBottomInset: false,
-          body: SingleChildScrollView(child: _buildScreenLayout(deck)),
+          body: SingleChildScrollView(
+            child: _buildScreenLayout(
+              deck,
+              settings.getPlayerName() ?? "Player",
+            ),
+          ),
           floatingActionButton: ExpandableFab(
             children: ActionTitles.list
                 .asMap()
@@ -106,7 +115,10 @@ class PlayScreen extends ConsumerWidget {
     );
   }
 
-  Widget _buildScreenLayout(PromptCardDeckObject currentDeck) {
+  Widget _buildScreenLayout(
+    PromptCardDeckObject currentDeck,
+    String playerName,
+  ) {
     final bgColor = DeckType.getDeckBgColor(currentDeck.name);
     final slice =
         PromptCardDeckObject.shuffle(currentDeck).cards.sublist(0, 10);
@@ -119,7 +131,7 @@ class PlayScreen extends ConsumerWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Title(color: Colors.white, child: Text("Good morning, ")),
-            Title(color: Colors.white, child: Text("Player")),
+            Title(color: Colors.white, child: Text(playerName)),
           ],
         ),
         Common.gap(),
