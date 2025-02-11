@@ -5,7 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
 import '../../models/controllers/settings_controller.dart';
-import '../../models/persistence/settings_base_persistence.dart';
+import '../../models/data/settings_base_persistence.dart';
 import '../widgets/action_button.dart';
 import '../widgets/common.dart';
 import '../widgets/custom_name_dialog.dart';

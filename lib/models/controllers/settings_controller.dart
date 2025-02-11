@@ -4,8 +4,8 @@ import 'package:flutter/foundation.dart';
 import 'package:logging/logging.dart';
 import 'package:soulbloom/models/prompt_cards.dart';
 
-import '../persistence/settings_base_persistence.dart';
-import '../persistence/settings_shared_prefs_persistence.dart';
+import '../data/settings_base_persistence.dart';
+import '../data/settings_shared_prefs_persistence.dart';
 
 class SettingsController {
   static final _log = Logger('SettingsController');
