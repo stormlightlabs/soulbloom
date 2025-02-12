@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../models/prompt_cards.dart';
 
 class PromptCardWidget extends StatelessWidget {
-  final PromptCardObject promptCard;
+  final CardObject promptCard;
   final String deckName;
   final bool faceUp;
   final double width;

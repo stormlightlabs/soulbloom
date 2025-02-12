@@ -2,14 +2,14 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-class PromptCardDeckObject {
+class DeckObject {
   String name;
   String description;
   String filepath;
   DeckType type;
-  List<PromptCardObject> cards = [];
+  List<CardObject> cards = [];
 
-  PromptCardDeckObject({
+  DeckObject({
     required this.name,
     required this.description,
     required this.filepath,
@@ -17,25 +17,25 @@ class PromptCardDeckObject {
     this.cards = const [],
   });
 
-  set cardSet(List<PromptCardObject> c) {
+  set cardSet(List<CardObject> c) {
     cards = c;
   }
 
-  PromptCardObject getRandomCard() {
+  CardObject getRandomCard() {
     final Random rand = Random();
     return cards[rand.nextInt(cards.length)];
   }
 
-  PromptCardObject shuffleAndDraw() {
+  CardObject shuffleAndDraw() {
     // Copy the deck to a new instance so that we don't mutate the original deck
-    final copiedDeck = PromptCardDeckObject.shuffle(this);
+    final copiedDeck = DeckObject.shuffle(this);
     return copiedDeck.cards.first;
   }
 
-  factory PromptCardDeckObject.shuffle(PromptCardDeckObject deck) {
-    final List<PromptCardObject> shuffledCards = deck.cards.toList();
+  factory DeckObject.shuffle(DeckObject deck) {
+    final List<CardObject> shuffledCards = deck.cards.toList();
     shuffledCards.shuffle();
-    return PromptCardDeckObject(
+    return DeckObject(
       name: deck.name,
       description: deck.description,
       filepath: deck.filepath,
@@ -45,7 +45,7 @@ class PromptCardDeckObject {
   }
 }
 
-class PromptCardObject {
+class CardObject {
   final String id;
   final String title;
   final int duration;
@@ -53,7 +53,7 @@ class PromptCardObject {
   final String instructions;
   final String difficulty;
 
-  PromptCardObject(
+  CardObject(
     this.id,
     this.title,
     this.duration,

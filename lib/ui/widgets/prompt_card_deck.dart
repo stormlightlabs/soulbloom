@@ -15,13 +15,13 @@ class PromptCardDeck extends StatefulWidget {
 }
 
 class _PromptCardDeckState extends State<PromptCardDeck> {
-  late PromptCardDeckObject playingCardDeck;
+  late DeckObject playingCardDeck;
 
   Future<void> loadDeck() async {
     final String deckName = widget.deckName;
     final String content =
         await rootBundle.loadString("assets/data/$deckName.yml");
-    final data = await jsonDecode(content) as PromptCardDeckObject;
+    final data = await jsonDecode(content) as DeckObject;
 
     setState(() {
       playingCardDeck = data;
