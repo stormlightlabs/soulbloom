@@ -16,15 +16,11 @@ class DeckBrowserScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final decksAsync = ref.watch(decksProvider);
-    return decksAsync.when(
-      loading: () => CircularProgressIndicator(),
-      error: (err, stack) => Text('Error: $err'),
-      data: (decks) => _buildScreenLayout(decks.getDeck(type)),
-    );
+    final decks = ref.watch(deckBoxNotifierProvider);
+    return _buildScreenLayout(decks.getDeck(type));
   }
 
-  Widget _buildScreenLayout(PromptCardDeckObject currentDeck) {
+  Widget _buildScreenLayout(DeckObject currentDeck) {
     return Scaffold(
       appBar: AppBar(title: Text(currentDeck.name)),
       resizeToAvoidBottomInset: false,
@@ -60,7 +56,7 @@ class DeckBrowserScreen extends ConsumerWidget {
 }
 
 class GameCardListTile extends StatelessWidget {
-  final PromptCardObject card;
+  final CardObject card;
   final DeckType type;
 
   const GameCardListTile({super.key, required this.card, required this.type});
@@ -114,7 +110,7 @@ class GameCardListTile extends StatelessWidget {
 }
 
 class GameCardDetailModal extends StatelessWidget {
-  final PromptCardObject card;
+  final CardObject card;
 
   const GameCardDetailModal({super.key, required this.card});
 
