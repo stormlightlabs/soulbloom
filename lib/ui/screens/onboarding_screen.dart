@@ -37,13 +37,25 @@ class OnboardingScreenState extends State<OnboardingScreen> {
       backgroundColor: Colors.lightGreenAccent[100]!,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: [_title, _input, _dropdown, _submit(settings), _clear],
+        children: [
+          _title,
+          _message,
+          _input,
+          _dropdown,
+          _submit(settings),
+          _clear
+        ],
       ),
     );
   }
 
   Widget get _title => const Text(
         'Welcome to Soulbloom!',
+        style: TextStyle(color: Colors.black87),
+      );
+
+  Widget get _message => const Text(
+        'Please enter your name and select a deck to begin.',
         style: TextStyle(color: Colors.black87),
       );
 
@@ -79,9 +91,11 @@ class OnboardingScreenState extends State<OnboardingScreen> {
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
           side: const BorderSide(color: Colors.white),
           backgroundColor: Colors.redAccent,
-          textStyle: const TextStyle(color: Colors.white),
         ),
-        child: const Text('Clear'),
+        child: const Text(
+          'Clear',
+          style: TextStyle(color: Colors.white, fontSize: 16),
+        ),
       ),
     );
   }
@@ -89,12 +103,40 @@ class OnboardingScreenState extends State<OnboardingScreen> {
   Widget _submit(SettingsController settings) {
     return ElevatedButton(
       onPressed: () {
-        log.info('Starting game with $playerName and $selectedDeck');
+        String notificationMessage = '';
+        if (selectedDeck == null) {
+          notificationMessage =
+              'Using ${DeckType.rest.name} deck as default.\n';
+          settings.setDefaultDeck(DeckType.rest);
+          log.warning('No deck selected, defaulting to ${DeckType.rest}');
+        } else {
+          settings.setDefaultDeck(selectedDeck);
+          log.info('Selected deck: $selectedDeck');
+        }
 
-        settings.saveUsername(playerName.isEmpty ? playerName : 'Player');
-        settings.setDefaultDeck(selectedDeck ?? DeckType.rest);
+        if (playerName.isNotEmpty) {
+          settings.saveUsername(playerName);
+          log.info('Player name set to $playerName');
+        } else {
+          notificationMessage += 'Using "Player" as default name.';
+          settings.saveUsername('Player');
+          log.warning('No player name entered, defaulting to "Player"');
+        }
 
-        if (context.mounted) GoRouter.of(context).go('/play');
+        GoRouter.of(context).go('/play');
+        if (notificationMessage.isNotEmpty) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              backgroundColor: Colors.amberAccent,
+              content: Text(
+                notificationMessage,
+                style: TextStyle(color: Colors.black87),
+                textAlign: TextAlign.center,
+              ),
+              duration: const Duration(seconds: 3),
+            ),
+          );
+        }
       },
       child: const Text('Start'),
     );
