@@ -1,9 +1,11 @@
 // Copyright 2025, Stormlight Labs
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
+import 'package:soulbloom/models/prompt_cards.dart';
 import 'package:url_launcher/link.dart';
 
 import '../../audio/sounds.dart';
@@ -23,9 +25,36 @@ class MainMenuScreen extends ConsumerWidget {
 
   static const _bgImage = AssetImage("assets/images/main-menu-bg.png");
 
+  /// We want to redirect if the user does not have a name and/or
+  /// default deck selected.
+  bool _shouldRedirect(SettingsController settings) {
+    String? playerName = settings.getPlayerName();
+    DeckType? selectedDeck = settings.getDefaultDeck();
+
+    if (playerName == null || playerName.isEmpty) {
+      return true;
+    }
+
+    if (selectedDeck == null) {
+      return true;
+    }
+
+    return false;
+  }
+
+  void move(BuildContext ctx, SettingsController settings) {
+    bool shouldRedirect = _shouldRedirect(settings);
+
+    if (shouldRedirect) {
+      GoRouter.of(ctx).go('/onboarding');
+    } else {
+      GoRouter.of(ctx).go('/play');
+    }
+  }
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final settingsController = context.watch<SettingsController>();
+    final settings = context.watch<SettingsController>();
     final audioController = context.watch<AudioController>();
     final theme = Theme.of(context).textTheme;
     return Container(
@@ -48,7 +77,7 @@ class MainMenuScreen extends ConsumerWidget {
               ActionButton(
                 onPressed: () {
                   audioController.playSfx(SfxType.buttonTap);
-                  GoRouter.of(context).go('/play');
+                  move(context, settings);
                 },
                 child: Text('Start', style: theme.titleLarge),
               ),
@@ -61,9 +90,9 @@ class MainMenuScreen extends ConsumerWidget {
               Padding(
                 padding: const EdgeInsets.only(top: 32),
                 child: ValueListenableBuilder<bool>(
-                  valueListenable: settingsController.soundOn,
+                  valueListenable: settings.soundOn,
                   builder: (context, audioOn, child) => IconButton(
-                    onPressed: () => settingsController.toggleSoundOn(),
+                    onPressed: () => settings.toggleSoundOn(),
                     icon: Icon(
                       audioOn ? Icons.volume_up : Icons.volume_off,
                       color: Colors.white,
@@ -73,7 +102,7 @@ class MainMenuScreen extends ConsumerWidget {
                 ),
               ),
               Common.gap(),
-              Common.gap(),
+              _resetButton(context, settings),
               Text(
                 'v0.1.0 by Stormlight Labs',
                 textAlign: TextAlign.center,
@@ -117,5 +146,66 @@ class MainMenuScreen extends ConsumerWidget {
         );
       },
     );
+  }
+
+  // This (particularly the ScaffoldMessenger) can be recomposed, such that
+  // it exists as a reuseable widget.
+  Widget _resetButton(BuildContext ctx, SettingsController settings) {
+    if (kDebugMode) {
+      final theme = Theme.of(ctx).textTheme;
+      return Padding(
+        padding: EdgeInsets.only(top: 4, bottom: 4),
+        child: OutlinedButton(
+          style: OutlinedButton.styleFrom(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
+            side: BorderSide(color: Colors.red),
+            overlayColor: Colors.redAccent,
+            backgroundColor: Colors.white,
+            shadowColor: Colors.redAccent,
+          ),
+          onPressed: () async {
+            var state = settings.debugState;
+            debugPrint("Resetting settings from \n$state");
+            await settings.reset();
+
+            if (ctx.mounted) {
+              ScaffoldMessenger.of(ctx).showSnackBar(
+                SnackBar(
+                  backgroundColor: Colors.red,
+                  content: Row(
+                    spacing: 8,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "Settings reset",
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      Icon(
+                        Icons.check_circle_outline_outlined,
+                        color: Colors.greenAccent,
+                        size: 24,
+                      ),
+                    ],
+                  ),
+                  duration: const Duration(seconds: 2),
+                ),
+              );
+            }
+
+            state = settings.debugState;
+
+            debugPrint("Settings reset to \n$state");
+          },
+          child: Text(
+            "Reset Settings",
+            style: theme.labelMedium!.copyWith(color: Colors.red),
+          ),
+        ),
+      );
+    } else {
+      return Common.gap();
+    }
   }
 }

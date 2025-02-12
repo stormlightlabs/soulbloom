@@ -11,7 +11,13 @@ class SharedPrefsSettingsPersistence extends BaseSettingsPersistence {
   @override
   Future<String?> getUsername({String? defaultValue}) async {
     final prefs = await store;
-    return prefs.getString(PrefKeys.playerName.key);
+    var username = prefs.getString(PrefKeys.playerName.key);
+
+    if (username == null && defaultValue != null) {
+      return defaultValue;
+    } else {
+      return username;
+    }
   }
 
   @override
@@ -103,5 +109,11 @@ class SharedPrefsSettingsPersistence extends BaseSettingsPersistence {
   Future<bool> getHapticsOn({required bool defaultValue}) async {
     final prefs = await store;
     return prefs.getBool(PrefKeys.hapticsOn.key) ?? defaultValue;
+  }
+
+  @override
+  Future<void> resetSettings() async {
+    final prefs = await store;
+    await prefs.clear();
   }
 }

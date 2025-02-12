@@ -67,18 +67,22 @@ class OnboardingScreenState extends State<OnboardingScreen> {
       );
 
   Widget get _clear {
-    return OutlinedButton(
-      onPressed: () => setState(() {
-        playerName = '';
-        selectedDeck = null;
-      }),
-      style: OutlinedButton.styleFrom(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-        side: const BorderSide(color: Colors.red),
-        backgroundColor: Colors.white,
-        textStyle: const TextStyle(color: Colors.black87),
+    return Padding(
+      padding: EdgeInsets.only(top: 16),
+      child: OutlinedButton(
+        onPressed: () => setState(() {
+          playerName = '';
+          selectedDeck = null;
+        }),
+        style: OutlinedButton.styleFrom(
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+          side: const BorderSide(color: Colors.white),
+          backgroundColor: Colors.redAccent,
+          textStyle: const TextStyle(color: Colors.white),
+        ),
+        child: const Text('Clear'),
       ),
-      child: const Text('Clear'),
     );
   }
 

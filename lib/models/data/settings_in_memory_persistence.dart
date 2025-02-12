@@ -76,4 +76,9 @@ class InMemSettingsPersistence extends BaseSettingsPersistence {
   Future<void> setDefaultDeck(DeckType? deckType) async {
     _deckType = deckType ?? DeckType.rest;
   }
+
+  @override
+  Future<void> resetSettings() async {
+    // No-op
+  }
 }

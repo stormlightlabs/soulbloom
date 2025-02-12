@@ -118,4 +118,7 @@ abstract class BaseSettingsPersistence {
   /// This is nullable because we want to launch the "onboarding" screen so
   /// that the user can select a default deck.
   Future<DeckType?> getDefaultDeck();
+
+  /// Clear all settings
+  Future<void> resetSettings();
 }
