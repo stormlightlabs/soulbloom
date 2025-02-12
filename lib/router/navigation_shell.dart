@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-class SoulbloomShell extends StatelessWidget {
+class SoulbloomShell extends ConsumerWidget {
   final StatefulNavigationShell navigationShell;
   const SoulbloomShell({
     Key? key,
@@ -16,7 +17,7 @@ class SoulbloomShell extends StatelessWidget {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,

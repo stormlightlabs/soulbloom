@@ -3,6 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import 'package:soulbloom/models/controllers/settings_controller.dart';
 
 import '../../models/prompt_cards.dart';
 import '../../models/prompt_deck_provider.dart';
@@ -68,48 +70,52 @@ class PlayScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final decksAsync = ref.watch(decksProvider);
-    final type = DeckType.random();
+    final settings = context.watch<SettingsController>();
     final theme = Theme.of(context).textTheme;
-    return decksAsync.when(
-      loading: () => CircularProgressIndicator(),
-      error: (err, stack) => Text('Error: $err'),
-      data: (decks) {
-        final PromptCardDeckObject deck = decks.getDeck(type);
-        return Scaffold(
-          appBar: AppBar(
-            title: Text(
-              "Shuffle and Draw",
-              style: theme.bodyLarge!.copyWith(
-                fontSize: 32,
-                fontWeight: FontWeight.bold,
+
+    final decks = ref.watch(deckBoxNotifierProvider);
+    final type = settings.getDefaultDeck() ?? DeckType.random();
+    final DeckObject deck = decks.getDeck(type);
+
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          "Shuffle and Draw",
+          style: theme.bodyLarge!.copyWith(
+            fontSize: 32,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
+      resizeToAvoidBottomInset: false,
+      body: SingleChildScrollView(
+        child: _buildScreenLayout(
+          deck,
+          settings.getPlayerName() ?? "Player",
+        ),
+      ),
+      floatingActionButton: ExpandableFab(
+        children: ActionTitles.list
+            .asMap()
+            .entries
+            .map(
+              (entry) => ActionButton(
+                onPressed: () => _showAction(context, entry.key),
+                icon: entry.value.icon,
+                tooltip: entry.value.label,
               ),
-            ),
-          ),
-          resizeToAvoidBottomInset: false,
-          body: SingleChildScrollView(child: _buildScreenLayout(deck)),
-          floatingActionButton: ExpandableFab(
-            children: ActionTitles.list
-                .asMap()
-                .entries
-                .map(
-                  (entry) => ActionButton(
-                    onPressed: () => _showAction(context, entry.key),
-                    icon: entry.value.icon,
-                    tooltip: entry.value.label,
-                  ),
-                )
-                .toList(),
-          ),
-        );
-      },
+            )
+            .toList(),
+      ),
     );
   }
 
-  Widget _buildScreenLayout(PromptCardDeckObject currentDeck) {
+  Widget _buildScreenLayout(
+    DeckObject currentDeck,
+    String playerName,
+  ) {
     final bgColor = DeckType.getDeckBgColor(currentDeck.name);
-    final slice =
-        PromptCardDeckObject.shuffle(currentDeck).cards.sublist(0, 10);
+    final slice = DeckObject.shuffle(currentDeck).cards.sublist(0, 10);
 
     return Column(
       children: [
@@ -119,7 +125,7 @@ class PlayScreen extends ConsumerWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Title(color: Colors.white, child: Text("Good morning, ")),
-            Title(color: Colors.white, child: Text("Player")),
+            Title(color: Colors.white, child: Text(playerName)),
           ],
         ),
         Common.gap(),
@@ -174,14 +180,14 @@ class PlayScreen extends ConsumerWidget {
     );
   }
 
-  Widget _buildCardTitle(PromptCardObject card) {
+  Widget _buildCardTitle(CardObject card) {
     return Padding(
       padding: EdgeInsets.all(12),
       child: Text(card.title, style: TextStyle(fontSize: 24)),
     );
   }
 
-  Widget _buildCardContent(PromptCardObject card) {
+  Widget _buildCardContent(CardObject card) {
     return Flexible(
       child: Center(
         child: Padding(
@@ -196,7 +202,7 @@ class PlayScreen extends ConsumerWidget {
   }
 
   /// The card's footer shows its duration and difficulty
-  Widget _buildCardFooter(PromptCardObject card) {
+  Widget _buildCardFooter(CardObject card) {
     final style = TextStyle(
       fontSize: 12,
       fontFamily: GoogleFonts.dmSans().fontFamily,
@@ -222,7 +228,7 @@ class PlayScreen extends ConsumerWidget {
     );
   }
 
-  Widget _buildCurrentDeckNameRow(PromptCardDeckObject currentDeck) {
+  Widget _buildCurrentDeckNameRow(DeckObject currentDeck) {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 8.0),
       child: Row(

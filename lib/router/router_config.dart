@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:soulbloom/ui/screens/onboarding_screen.dart';
 
 import '../ui/screens/deck_card_browser_screen.dart';
 import '../ui/screens/deck_selection_screen.dart';
@@ -54,66 +55,67 @@ final router = GoRouter(
   routes: [
     GoRoute(
       path: '/',
-      builder: (context, state) => const MainMenuScreen(key: Key('main menu')),
-      routes: [
-        StatefulShellRoute.indexedStack(
-          builder: (context, state, navShell) {
-            return SoulbloomShell(navigationShell: navShell);
-          },
-          branches: [
-            StatefulShellBranch(
-              navigatorKey: _shellNavigatorPlayKey,
-              routes: [
-                GoRoute(
-                  path: '/play',
-                  pageBuilder: (context, state) => const MaterialPage(
-                    child: PlayScreen(),
-                  ),
-                  routes: [],
-                ),
-              ],
+      builder: (context, state) => MainMenuScreen(key: Key('main menu')),
+    ),
+    StatefulShellRoute.indexedStack(
+      builder: (context, state, navShell) {
+        return SoulbloomShell(navigationShell: navShell);
+      },
+      branches: [
+        StatefulShellBranch(
+          navigatorKey: _shellNavigatorPlayKey,
+          routes: [
+            GoRoute(
+              path: '/play',
+              pageBuilder: (context, state) => const MaterialPage(
+                child: PlayScreen(),
+              ),
+              routes: [],
             ),
-            StatefulShellBranch(
-              navigatorKey: _shellNavigatorBrowserKey,
-              routes: [
-                GoRoute(
-                  path: '/decks',
-                  pageBuilder: (context, state) => const MaterialPage(
-                    child: DeckSelectionScreen(),
-                  ),
-                  routes: [
-                    GoRoute(
-                      path: "/:id",
-                      builder: (context, state) {
-                        final String id = state.pathParameters["id"] as String;
-                        return DeckBrowserScreen(id: id);
-                      },
-                    )
-                  ],
-                ),
-              ],
-            ),
-            StatefulShellBranch(
-              navigatorKey: _shellNavigatorJournalKey,
-              routes: [
-                GoRoute(
-                  path: "/journal",
-                  pageBuilder: (context, state) {
-                    return const MaterialPage(
-                      child: JournalScreen(),
-                    );
-                  },
-                )
-              ],
-            )
           ],
         ),
-        GoRoute(
-          path: 'settings',
-          builder: (context, state) =>
-              const SettingsScreen(key: Key('settings')),
+        StatefulShellBranch(
+          navigatorKey: _shellNavigatorBrowserKey,
+          routes: [
+            GoRoute(
+              path: '/decks',
+              pageBuilder: (context, state) => const MaterialPage(
+                child: DeckSelectionScreen(),
+              ),
+              routes: [
+                GoRoute(
+                  path: "/:id",
+                  builder: (context, state) {
+                    final String id = state.pathParameters["id"] as String;
+                    return DeckBrowserScreen(id: id);
+                  },
+                ),
+              ],
+            ),
+          ],
         ),
+        StatefulShellBranch(
+          navigatorKey: _shellNavigatorJournalKey,
+          routes: [
+            GoRoute(
+              path: "/journal",
+              pageBuilder: (context, state) {
+                return const MaterialPage(
+                  child: JournalScreen(),
+                );
+              },
+            )
+          ],
+        )
       ],
     ),
+    GoRoute(
+      path: '/settings',
+      builder: (context, state) => const SettingsScreen(key: Key('settings')),
+    ),
+    GoRoute(
+      path: "/onboarding",
+      builder: (context, state) => OnboardingScreen(key: Key("onboarding")),
+    )
   ],
 );

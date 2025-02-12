@@ -69,6 +69,6 @@ class _CustomNameDialogState extends State<CustomNameDialog> {
   @override
   void initState() {
     super.initState();
-    _controller.text = context.read<SettingsController>().username.value;
+    _controller.text = context.read<SettingsController>().username.value ?? '';
   }
 }
