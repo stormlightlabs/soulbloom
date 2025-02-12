@@ -9,11 +9,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart' as r;
 import 'package:google_fonts/google_fonts.dart';
 import 'package:logging/logging.dart';
 import 'package:provider/provider.dart';
-
-import 'models/app_lifecycle.dart';
-import 'models/controllers/audio_controller.dart';
-import 'models/controllers/settings_controller.dart';
-import 'router/router_config.dart';
+import 'package:soulbloom/models/app_lifecycle.dart';
+import 'package:soulbloom/models/controllers/audio_controller.dart';
+import 'package:soulbloom/models/controllers/settings_controller.dart';
+import 'package:soulbloom/models/prompt_deck_provider.dart';
+import 'package:soulbloom/router/router_config.dart';
 
 void main() async {
   Logger.root.level = kDebugMode ? Level.FINE : Level.INFO;
@@ -34,7 +34,18 @@ void main() async {
     DeviceOrientation.portraitDown,
   ]);
 
-  runApp(r.ProviderScope(child: MyApp()));
+  final mapping = await loadDecks();
+  final deckBox = DeckBox.fromMapping(mapping);
+
+  runApp(r.ProviderScope(
+    overrides: [
+      // This allows us to preload the YAML backed decks
+      // so that they're available once the app finishes
+      // loading.
+      deckBoxProvider.overrideWithValue(deckBox),
+    ],
+    child: MyApp(),
+  ));
 }
 
 class MyApp extends r.ConsumerWidget {

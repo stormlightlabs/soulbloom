@@ -1,18 +1,20 @@
+// Copyright 2025, Stormlight Labs
+
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:yaml/yaml.dart';
 
 import './prompt_cards.dart';
 
-class DeckContainer {
-  final PromptCardDeckObject creativityDeck;
-  final PromptCardDeckObject movementDeck;
-  final PromptCardDeckObject rechargeDeck;
-  final PromptCardDeckObject actDeck;
-  final PromptCardDeckObject cbtDeck;
-  final PromptCardDeckObject dbtDeck;
+class DeckBox {
+  final DeckObject creativityDeck;
+  final DeckObject movementDeck;
+  final DeckObject rechargeDeck;
+  final DeckObject actDeck;
+  final DeckObject cbtDeck;
+  final DeckObject dbtDeck;
 
-  const DeckContainer({
+  const DeckBox({
     required this.creativityDeck,
     required this.movementDeck,
     required this.rechargeDeck,
@@ -21,8 +23,8 @@ class DeckContainer {
     required this.dbtDeck,
   });
 
-  factory DeckContainer.fromMapping(Map<String, PromptCardDeckObject> data) {
-    return DeckContainer(
+  factory DeckBox.fromMapping(Map<String, DeckObject> data) {
+    return DeckBox(
       actDeck: data[DeckType.act.name]!,
       cbtDeck: data[DeckType.cbt.name]!,
       dbtDeck: data[DeckType.dbt.name]!,
@@ -32,7 +34,7 @@ class DeckContainer {
     );
   }
 
-  List<PromptCardDeckObject> toList() => [
+  List<DeckObject> toList() => [
         creativityDeck,
         movementDeck,
         rechargeDeck,
@@ -41,7 +43,7 @@ class DeckContainer {
         dbtDeck,
       ];
 
-  PromptCardDeckObject getDeck(DeckType type) {
+  DeckObject getDeck(DeckType type) {
     switch (type) {
       case DeckType.creativity:
         return creativityDeck;
@@ -61,58 +63,63 @@ class DeckContainer {
   }
 }
 
-class DecksNotifier extends AsyncNotifier<DeckContainer> {
-  Future<DeckContainer> _loadDecks() async {
-    Map<String, PromptCardDeckObject> result = <String, PromptCardDeckObject>{};
-    try {
-      for (var element in DeckType.list) {
-        final filename = element.filename;
-        final filepath = "assets/data/$filename";
-        final String content = await rootBundle.loadString(filepath);
-        final YamlMap data = loadYaml(content) as YamlMap;
+Future<Map<String, DeckObject>> loadDecks() async {
+  Map<String, DeckObject> result = <String, DeckObject>{};
+  try {
+    for (var element in DeckType.list) {
+      final filename = element.filename;
+      final filepath = "assets/data/$filename";
+      final String content = await rootBundle.loadString(filepath);
+      final YamlMap data = loadYaml(content) as YamlMap;
 
-        var currentDeck = PromptCardDeckObject(
-          name: data["name"] as String,
-          description: data["description"] as String,
-          filepath: filepath,
-          type: element,
-        );
+      var currentDeck = DeckObject(
+        name: data["name"] as String,
+        description: data["description"] as String,
+        filepath: filepath,
+        type: element,
+      );
 
-        currentDeck.cardSet = ((data["cards"] as YamlList).map(
-          (cardEl) {
-            YamlMap cardElement = cardEl as YamlMap;
+      currentDeck.cardSet = ((data["cards"] as YamlList).map(
+        (cardEl) {
+          YamlMap cardElement = cardEl as YamlMap;
 
-            return PromptCardObject(
-              cardElement["id"] as String,
-              cardElement["title"] as String,
-              cardElement["duration"] as int,
-              cardElement["description"] as String,
-              cardElement["instructions"] as String,
-              cardElement["difficulty"] as String,
-            );
-          },
-        ).toList());
+          return CardObject(
+            cardElement["id"] as String,
+            cardElement["title"] as String,
+            cardElement["duration"] as int,
+            cardElement["description"] as String,
+            cardElement["instructions"] as String,
+            cardElement["difficulty"] as String,
+          );
+        },
+      ).toList());
 
-        result[element.name] = currentDeck;
-      }
-
-      return DeckContainer.fromMapping(result);
-    } catch (e) {
-      throw Exception('Failed to load cards: $e');
+      result[element.name] = currentDeck;
     }
-  }
 
-  Future<void> refreshCards() async {
-    state = const AsyncValue.loading();
-    state = await AsyncValue.guard(() => _loadDecks());
-  }
-
-  @override
-  Future<DeckContainer> build() async {
-    return _loadDecks();
+    return result;
+  } catch (e) {
+    throw Exception('Failed to load cards: $e');
   }
 }
 
-final decksProvider = AsyncNotifierProvider<DecksNotifier, DeckContainer>(
-  () => DecksNotifier(),
+/// We want this to be synchronously available, despite files being loaded
+/// asynchronously. To do this, we use a provider that throws an error if it's
+/// accessed before the data is loaded.
+///
+/// In the application's entrypoint, this is overriden with the contents loaded
+/// in [loadDecks], as starting the application lifecycle is in a future. We
+/// also define a notifier that watches for updates to the data provider for a
+/// [DeckBox] object.
+///
+/// By the time the notifier is accessed, the data is already loaded.
+final deckBoxProvider = Provider<DeckBox>((ref) => throw UnimplementedError());
+
+class DeckBoxNotifier extends Notifier<DeckBox> {
+  @override
+  DeckBox build() => ref.watch(deckBoxProvider);
+}
+
+final deckBoxNotifierProvider = NotifierProvider<DeckBoxNotifier, DeckBox>(
+  DeckBoxNotifier.new,
 );
