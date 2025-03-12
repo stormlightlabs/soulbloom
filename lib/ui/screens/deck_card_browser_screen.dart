@@ -1,7 +1,6 @@
 // Copyright 2025, Stormlight Labs
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import '../../models/prompt_cards.dart';
 import '../../models/prompt_deck_provider.dart';
@@ -31,11 +30,7 @@ class DeckBrowserScreen extends ConsumerWidget {
               padding: EdgeInsets.only(left: 28, right: 28, top: 8),
               child: Text(
                 currentDeck.description,
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                  fontFamily: GoogleFonts.comingSoon().fontFamily,
-                ),
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
               ),
             ),
             ListView.builder(
@@ -76,7 +71,6 @@ class GameCardListTile extends StatelessWidget {
             fontWeight: FontWeight.bold,
             color: Colors.grey[800],
             fontSize: 20,
-            fontFamily: GoogleFonts.capriola().fontFamily,
           ),
         ),
         subtitle: Text(

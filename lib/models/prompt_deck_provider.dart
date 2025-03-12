@@ -45,8 +45,6 @@ class DeckBox {
 
   DeckObject getDeck(DeckType type) {
     switch (type) {
-      case DeckType.creativity:
-        return creativityDeck;
       case DeckType.movement:
         return movementDeck;
       case DeckType.rest:
@@ -57,8 +55,9 @@ class DeckBox {
         return dbtDeck;
       case DeckType.cbt:
         return cbtDeck;
+      case DeckType.creativity:
       default:
-        throw Exception();
+        return creativityDeck;
     }
   }
 }

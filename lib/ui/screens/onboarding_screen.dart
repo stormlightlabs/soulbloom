@@ -22,7 +22,7 @@ class OnboardingScreenState extends State<OnboardingScreen> {
 
   Logger log = Logger('OnboardingScreenState');
 
-  /// Label, value pairs for the deck dropdown.
+  /// (Label/child,value) pairs for the deck dropdown.
   List<DropdownMenuItem<DeckType>> get dropDownItems => DeckType.list
       .map((deckType) => DropdownMenuItem<DeckType>(
             value: deckType,

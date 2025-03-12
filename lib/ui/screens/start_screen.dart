@@ -68,7 +68,7 @@ class MainMenuScreen extends ConsumerWidget {
             child: Text(
               'Soulbloom',
               textAlign: TextAlign.center,
-              style: theme.displayLarge,
+              style: theme.titleLarge,
             ),
           ),
           rectangularMenuArea: Column(
@@ -84,7 +84,17 @@ class MainMenuScreen extends ConsumerWidget {
               Common.gap(),
               ActionButton(
                 onPressed: () => GoRouter.of(context).push('/settings'),
-                child: Text('Settings', style: theme.titleLarge),
+                // child: Text('Settings', style: theme.titleLarge),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  spacing: 8,
+                  children: [
+                    Text('Settings', style: theme.titleLarge),
+                    Icon(Icons.settings, size: theme.titleLarge!.fontSize),
+                  ],
+                ),
               ),
               Common.gap(),
               Padding(
