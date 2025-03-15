@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:soulbloom/models/controllers/settings_controller.dart';
 
+import '../../models/controllers/settings_controller.dart';
 import '../../models/prompt_cards.dart';
 import '../../models/prompt_deck_provider.dart';
 import '../widgets/common.dart';
@@ -46,7 +46,7 @@ enum ActionTitles {
   static List<Icon> icons = [];
 }
 
-/// PlayScreen/MainScreen shows a deck of cards and animates
+/// [PlayScreen]/MainScreen shows a deck of cards and animates
 /// it when its shuffled.
 class PlayScreen extends ConsumerWidget {
   const PlayScreen({super.key});

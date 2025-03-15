@@ -8,7 +8,7 @@
 PRODUCT_NAME = card
 
 // The application's bundle identifier
-PRODUCT_BUNDLE_IDENTIFIER = com.example.card
+PRODUCT_BUNDLE_IDENTIFIER = org.stormlightlabs.soulbloom
 
 // The copyright displayed in application information
 PRODUCT_COPYRIGHT = Copyright © 2024 com.example. All rights reserved.

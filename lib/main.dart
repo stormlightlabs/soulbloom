@@ -51,8 +51,6 @@ void main() async {
 class MyApp extends r.ConsumerWidget {
   const MyApp({super.key});
 
-  static final _theme = SoulbloomTheme.defaultTheme().themeData;
-
   @override
   Widget build(BuildContext context, r.WidgetRef ref) {
     return AppLifecycleObserver(
@@ -69,12 +67,15 @@ class MyApp extends r.ConsumerWidget {
             dispose: (context, audio) => audio.dispose(),
             lazy: false,
           ),
+          Provider(create: (context) => SoulbloomTheme.defaultTheme())
         ],
         child: Builder(
           builder: (context) {
+            final themeData = context.watch<SoulbloomTheme>().themeData;
+
             return MaterialApp.router(
               title: 'Soulbloom',
-              theme: _theme,
+              theme: themeData,
               routerConfig: router,
             );
           },

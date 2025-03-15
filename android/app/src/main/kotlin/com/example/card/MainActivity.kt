@@ -1,4 +1,4 @@
-package com.example.card
+package org.stormlightlabs.soulbloom
 
 import io.flutter.embedding.android.FlutterActivity
 

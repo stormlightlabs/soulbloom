@@ -6,6 +6,7 @@ import 'package:yaml/yaml.dart';
 
 import './prompt_cards.dart';
 
+/// class [DeckBox] is a container class for [DeckObject] instances
 class DeckBox {
   final DeckObject creativityDeck;
   final DeckObject movementDeck;
